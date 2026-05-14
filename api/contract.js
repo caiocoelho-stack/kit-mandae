@@ -1,5 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const pdfParse = require('pdf-parse/lib/pdf-parse.js');
 
 const SYSTEM = `Você é especialista jurídico-comercial da Mandaê/Nuvem Envio.
 Analisa contratos comentados por clientes comparando com o manual
@@ -26,16 +29,18 @@ Responda SOMENTE em JSON válido sem markdown:
   "email_retorno": "string com Assunto: na primeira linha"
 }`;
 
-function loadManual() {
+async function loadManual() {
   try {
-    return fs.readFileSync(path.join(process.cwd(), 'public', 'manual.txt'), 'utf-8');
+    const pdfBuffer = fs.readFileSync(path.join(process.cwd(), 'public', 'manual.pdf'));
+    const data = await pdfParse(pdfBuffer);
+    return data.text;
   } catch {
     return '(manual não disponível)';
   }
 }
 
 async function callClaude(conteudo, contexto, extraInstruction = '') {
-  const manual = loadManual();
+  const manual = await loadManual();
   const userContent = `Manual de negociação interno:\n${manual}\n\n---\nContrato comentado pelo cliente:\n${conteudo}${contexto ? `\n\n---\nContexto do deal: ${contexto}` : ''}${extraInstruction ? `\n\n${extraInstruction}` : ''}`;
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
