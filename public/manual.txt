@@ -1,2 +1,1 @@
-MANUAL DE NEGOCIAÇÃO MANDAÊ/NUVEM ENVIO
-Substituir este arquivo pelo conteúdo real do manual antes do deploy.
+MANUAL — substituir pelo conteúdo real
