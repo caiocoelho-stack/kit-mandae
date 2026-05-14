@@ -23,8 +23,9 @@ Responda SEMPRE neste JSON sem texto fora dele:
 const USER = `Busque as notícias mais recentes sobre e-commerce e logística no Brasil \
 (últimas 48h). Selecione a mais relevante e útil para vendedores negociando com lojistas agora.`;
 
-async function callClaude(apiKey) {
-  let messages = [{ role: 'user', content: USER }];
+async function callClaude(apiKey, extraInstruction = '') {
+  const userContent = extraInstruction ? `${USER}\n\n${extraInstruction}` : USER;
+  let messages = [{ role: 'user', content: userContent }];
 
   for (let turn = 0; turn < 8; turn++) {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
@@ -48,7 +49,8 @@ async function callClaude(apiKey) {
     const d = await r.json();
 
     if (d.stop_reason === 'end_turn') {
-      return d.content.filter(b => b.type === 'text').map(b => b.text).join('');
+      const textBlocks = d.content.filter(b => b.type === 'text');
+      return textBlocks[textBlocks.length - 1]?.text ?? '';
     }
 
     if (d.stop_reason === 'tool_use') {
@@ -58,7 +60,8 @@ async function callClaude(apiKey) {
         .map(b => ({ type: 'tool_result', tool_use_id: b.id, content: '' }));
       messages.push({ role: 'user', content: results });
     } else {
-      return d.content.filter(b => b.type === 'text').map(b => b.text).join('');
+      const textBlocks = d.content.filter(b => b.type === 'text');
+      return textBlocks[textBlocks.length - 1]?.text ?? '';
     }
   }
 
@@ -66,7 +69,8 @@ async function callClaude(apiKey) {
 }
 
 function parseJson(text) {
-  const match = text.match(/\{[\s\S]*\}/);
+  const cleaned = text.replace(/```json|```/g, '').trim();
+  const match = cleaned.match(/\{[\s\S]*\}/);
   if (!match) throw new Error('No JSON found in response');
   return JSON.parse(match[0]);
 }
@@ -82,13 +86,14 @@ export default async function handler(req, res) {
     let parsed;
     try {
       parsed = parseJson(text);
-    } catch {
-      // retry once on invalid JSON
-      const text2 = await callClaude(apiKey);
+    } catch (e) {
+      console.error('Alerta error (first parse):', e.message, '\nText:', text.slice(0, 300));
+      const text2 = await callClaude(apiKey, 'Responda APENAS com o JSON, sem texto antes ou depois, sem markdown.');
       parsed = parseJson(text2);
     }
     res.json(parsed);
   } catch (e) {
+    console.error('Alerta error:', e);
     res.status(500).json({ error: e.message });
   }
 }
