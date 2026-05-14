@@ -13,17 +13,18 @@ export default async function handler(req, res) {
     userPrompt += `- Dias sem resposta: ${diasSemResposta}\n`;
   if (contexto) userPrompt += `- Contexto / última interação: ${contexto}\n`;
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 1000,
-      system: `Você é especialista em comunicação comercial B2B para a Mandaê/Nuvem Envio, plataforma de logística para e-commerce brasileiro.
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: `Você é especialista em comunicação comercial B2B para a Mandaê/Nuvem Envio, plataforma de logística para e-commerce brasileiro.
 Regras obrigatórias:
 - NUNCA use: "só passando para verificar", "tudo bem?", "espero que esteja bem", "como posso ajudar", "fico à disposição"
 - Seja direto, humano, gere valor real em cada mensagem
@@ -34,13 +35,17 @@ Regras obrigatórias:
 - "Cliente sumiu": leve, sem cobrança, reativa interesse com valor
 - "Renovação": foque no valor já entregue antes de qualquer pitch
 - Responda APENAS com a mensagem, sem explicações, sem prefácio`,
-      messages: [{ role: 'user', content: userPrompt }],
-    }),
-  });
+        messages: [{ role: 'user', content: userPrompt }],
+      }),
+    });
 
-  const data = await response.json();
-  const message = data.content?.[0]?.text || 'Erro ao gerar mensagem.';
-  res.status(200).json({ message });
+    const data = await response.json();
+    const message = data.content?.[0]?.text || 'Erro ao gerar mensagem.';
+    res.status(200).json({ message });
+  } catch (e) {
+    console.error('Followup error:', e);
+    res.status(500).json({ error: 'Erro interno ao gerar o follow-up.' });
+  }
 }
 
 export const config = {

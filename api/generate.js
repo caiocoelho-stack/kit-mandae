@@ -38,33 +38,38 @@ Para garantirmos que nossa operação rode redondinha desde o dia 1, resumimos a
 
 Tom da mensagem: ${toneLabel}. Adapte o tom conforme solicitado, mantendo o formato acima.`;
 
-  const response = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": process.env.ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01"
-    },
-    body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1024,
-      system: systemPrompt,
-      messages: [{
-        role: "user",
-        content: [{
-          type: "image",
-          source: { type: "base64", media_type: mimeType, data: fileBase64 }
-        }, {
-          type: "text",
-          text: "Gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente."
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": process.env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        system: systemPrompt,
+        messages: [{
+          role: "user",
+          content: [{
+            type: "image",
+            source: { type: "base64", media_type: mimeType, data: fileBase64 }
+          }, {
+            type: "text",
+            text: "Gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente."
+          }]
         }]
-      }]
-    })
-  });
+      })
+    });
 
-  const data = await response.json();
-  const message = data.content?.[0]?.text || "Erro ao gerar mensagem.";
-  res.status(200).json({ message });
+    const data = await response.json();
+    const message = data.content?.[0]?.text || "Erro ao gerar mensagem.";
+    res.status(200).json({ message });
+  } catch (e) {
+    console.error('Generate error:', e);
+    res.status(500).json({ error: 'Erro interno ao gerar a mensagem.' });
+  }
 }
 
 export const config = {

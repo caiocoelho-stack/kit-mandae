@@ -70,21 +70,26 @@ export default async function handler(req, res) {
     conteudoContrato = conteudoContrato.slice(0, 12000);
   }
 
-  let text = await callClaude(conteudoContrato, contexto);
-
-  let parsed;
   try {
-    parsed = JSON.parse(text);
-  } catch {
-    text = await callClaude(conteudoContrato, contexto, 'responda APENAS com JSON válido, sem markdown, sem texto adicional');
+    let text = await callClaude(conteudoContrato, contexto);
+
+    let parsed;
     try {
       parsed = JSON.parse(text);
     } catch {
-      return res.status(500).json({ error: 'Falha ao obter JSON válido da API.' });
+      text = await callClaude(conteudoContrato, contexto, 'responda APENAS com JSON válido, sem markdown, sem texto adicional');
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        return res.status(500).json({ error: 'Falha ao obter JSON válido da API.' });
+      }
     }
-  }
 
-  res.status(200).json(parsed);
+    res.status(200).json(parsed);
+  } catch (e) {
+    console.error('Contract error:', e);
+    res.status(500).json({ error: 'Erro interno ao analisar o contrato.' });
+  }
 }
 
 export const config = {
