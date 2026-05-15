@@ -1,14 +1,7 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  console.log('Body recebido:', {
-    mimeType: req.body?.mimeType,
-    tone: req.body?.tone,
-    sellerName: req.body?.sellerName,
-    fileBase64Length: req.body?.fileBase64?.length
-  });
-
-  const { fileBase64, mimeType, tone, sellerName } = req.body;
+  const { fileBase64, mimeType, tone, sellerName, includeNuvem, includeNext, markComercial } = req.body;
 
   const toneMap = {
     informal: "próximo e descontraído",
@@ -19,7 +12,24 @@ export default async function handler(req, res) {
   const seller = sellerName || "Time Comercial";
   const toneLabel = toneMap[tone] || "próximo e descontraído";
 
-  const systemPrompt = `Você é assistente de vendas da Mandaê/Nuvem Envio. Gere uma mensagem de boas-vindas para grupo de WhatsApp seguindo EXATAMENTE este formato:
+  const nuvemLine = includeNuvem !== false
+    ? '• Origem do lead: [extrair da ficha se vier do Nuvem Envio / Nuvemshop]\n'
+    : '';
+
+  const nextStepsBlock = includeNext !== false ? `
+📅 *Primeira coleta:* [extrair da ficha, ou informar que aguarda confirmação]
+📈 *Rampagem:* Entendemos que a operação começa com um volume menor — sem problema! Seria muito valioso ter uma previsão semana a semana (ex: semana 1 → X pedidos, semana 2 → Y...).
+
+👉 Se estiver tudo certinho nos pontos acima, é só mandar um OK aqui no grupo pra gente seguir! Caso tenham qualquer dúvida, é só falar.
+(Por padrão do nosso sistema, se não houver pontuações em 5 dias úteis, consideramos tudo validado.)` : `
+👉 Se estiver tudo certinho nos pontos acima, é só mandar um OK aqui no grupo pra gente seguir! Caso tenham qualquer dúvida, é só falar.`;
+
+  const systemPrompt = `Você é assistente de vendas da Mandaê / Nuvem Envio.
+
+IMPORTANTE: Na primeira linha da sua resposta, antes de tudo, escreva exatamente esta linha preenchida com dados extraídos da ficha:
+DADOS:{"c":"<razão social do cliente>","p":"<plano contratado>"}
+
+Depois pule uma linha e escreva a mensagem de boas-vindas para grupo de WhatsApp seguindo EXATAMENTE este formato:
 
 Pessoal, [saudação por horário: bom dia/boa tarde/boa noite] a todos! =))
 
@@ -32,21 +42,19 @@ Para garantirmos que nossa operação rode redondinha desde o dia 1, resumimos a
 🚚 *Coleta Diária:* [extrair horário da ficha]
 📍 *Local:* [endereço completo da ficha]
 🔗 *Integrações:* [extrair da ficha]
-🛡️ *Proteção:* Seguro contra extravio habilitado para todos os pedidos.
+${nuvemLine}🛡️ *Proteção:* Seguro contra extravio habilitado para todos os pedidos.
 🔒 *Dica de Segurança:* Recomendamos que atualizem periodicamente a senha do portal Mandaê e removam/alterem logins de integração antigos, se houver.
+${nextStepsBlock}
 
-📅 *Primeira coleta:* [extrair da ficha, ou informar que aguarda confirmação]
-📈 *Rampagem:* Entendemos que a operação começa com um volume menor — sem problema! Seria muito valioso ter uma previsão semana a semana (ex: semana 1 → X pedidos, semana 2 → Y...).
-
-👉 Se estiver tudo certinho nos pontos acima, é só mandar um OK aqui no grupo pra gente seguir! Caso tenham qualquer dúvida, é só falar.
-(Por padrão do nosso sistema, se não houver pontuações em 5 dias úteis, consideramos tudo validado.)
-
-— ${seller}, Comercial Mandaê/Nuvem Envio
+— ${seller}, Comercial Mandaê / Nuvem Envio
 
 Tom da mensagem: ${toneLabel}. Adapte o tom conforme solicitado, mantendo o formato acima.`;
 
   const isPdf = mimeType === 'application/pdf';
-  const textBlock = { type: "text", text: "Gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente." };
+  const textBlock = {
+    type: "text",
+    text: "Extraia os dados cadastrais e gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente."
+  };
   const fileBlock = isPdf
     ? { type: "document", source: { type: "base64", media_type: "application/pdf", data: fileBase64 } }
     : { type: "image",    source: { type: "base64", media_type: mimeType,            data: fileBase64 } };
@@ -70,13 +78,28 @@ Tom da mensagem: ${toneLabel}. Adapte o tom conforme solicitado, mantendo o form
       })
     });
 
-    console.log('Anthropic status:', response.status);
     const data = await response.json();
-    console.log('Anthropic response:', JSON.stringify(data).slice(0, 500));
-    const message = data.content?.[0]?.text || "Erro ao gerar mensagem.";
-    res.status(200).json({ message });
+    if (!response.ok) throw new Error(data.error?.message || `Anthropic error ${response.status}`);
+
+    const rawText = data.content?.[0]?.text || '';
+    let clienteDetectado = '';
+    let plano = '';
+    let message = rawText;
+
+    const dadosMatch = rawText.match(/^DADOS:\{"c":"([^"]*?)","p":"([^"]*?)"\}\n+/);
+    if (dadosMatch) {
+      clienteDetectado = dadosMatch[1].trim();
+      plano = dadosMatch[2].trim();
+      message = rawText.slice(dadosMatch[0].length).trim();
+    }
+
+    if (markComercial) {
+      message = message + '\n\n@comercial';
+    }
+
+    res.status(200).json({ message, clienteDetectado, plano });
   } catch (error) {
-    console.error('=== ERRO GENERATE ===', error);
+    console.error('[generate]', error);
     return res.status(500).json({
       error: error.message,
       message: 'Erro interno: ' + error.message
