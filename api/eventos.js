@@ -2,25 +2,6 @@ export default async function handler(req, res) {
   try {
     const ESTADOS_INCLUIR = ['SP', 'MG', 'SC'];
 
-    const LINK_MAP = {
-      0:  { i: 'https://luma.com/xy1ar15j', c: 'https://docs.google.com/spreadsheets/d/1OIJsZNY2y80HG9PUo7XtIc8Sa8yWyexn/edit?usp=sharing' },
-      1:  { i: 'https://www.sympla.com.br/evento/conecta-by-pandorium---edicao-belo-horizonte/3422861?d=NUVEM100', c: 'https://docs.google.com/spreadsheets/d/1eAtSuGokLlXUPzpuqXaJfaCSWZ-75CXgNEwZ3Mzq-lQ/edit?usp=sharing' },
-      2:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1UdTMjjeStWp2xKppnyWl99RMgY-Rb0aK9_UaQZUEe28/edit?usp=drive_link' },
-      3:  { i: 'https://www.sympla.com.br/evento/conecta-d2c-ribeirao-preto-2026/3320471', c: 'https://docs.google.com/spreadsheets/d/1E9e4aRMjEV7rY-FlM_OOGw0__gKv5m3e3eYY4SqURio/edit?usp=drive_link' },
-      4:  { i: '', c: 'https://docs.google.com/spreadsheets/d/11EQd6j9X35A4BvU6iP1SwPy8Hve7Ij_6CRprs6zqQaQ/edit?usp=drive_link' },
-      5:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1xEHTPuqlMXjz3THK7WZLkWEO_8mtAnziBZ27P9e88XA/edit?usp=drive_link' },
-      6:  { i: '', c: 'https://docs.google.com/spreadsheets/d/16bfMKrpVAHZtQJRSdiRb_YoWoGMaIvkc0Q5nWMfaPUw/edit?usp=drive_link' },
-      7:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1Bwqe8fCdok8LhYdJc5aPqEbbjBA3TJrvPNUmLZdEzwA/edit?usp=drive_link' },
-      9:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1Aiiba9Klu6C7_I5xKAwJ2NnwxSLcnzUh9PHarWXAVfg/edit?usp=drive_link' },
-      29: { i: '', c: 'https://docs.google.com/spreadsheets/d/1fbR4OvxGgYuUeDDjBgLfTH7ZfUrMC0mhj0S3Lj5LMGM/edit?usp=sharing' },
-      40: { i: 'https://www.sympla.com.br/evento/conecta-d2c-ribeirao-preto-2026/3320471', c: 'https://docs.google.com/spreadsheets/d/1q96itqAjWzIJYILA4xuY3NjBsxWO0HkdH0Qz5u7JNXw/edit?usp=drive_link' },
-      41: { i: 'https://luma.com/dyeculh3', c: 'https://docs.google.com/spreadsheets/d/1fbR4OvxGgYuUeDDjBgLfTH7ZfUrMC0mhj0S3Lj5LMGM/edit?usp=drive_link' },
-      42: { i: 'https://www.sympla.com.br/evento/d2c-conecta-divinopolis-nuvemshop-weethub/3349202', c: 'https://docs.google.com/spreadsheets/d/125uozYFKV3W4lmO7JFrCjOmS6tvz-u0oF_Zi-6ewvfc/edit?usp=drive_link' },
-      43: { i: 'https://luma.com/nj2dhypp', c: 'https://docs.google.com/spreadsheets/d/162Oo96UgzYMLJbVaLTYrg_JLkVh2XtLwuZVcubAaETs/edit?usp=drive_link' },
-      44: { i: 'https://luma.com/hkuzjqnc', c: 'https://docs.google.com/spreadsheets/d/1n1WUznC0lChbIhXtOejxA5rkBCP7HT-H_U9s4-oGyYs/edit?usp=drive_link' },
-      45: { i: 'https://luma.com/nrz4mn5e', c: 'https://docs.google.com/spreadsheets/d/1XSFXAG6GQ-mb6yhu2gouFwQVO3WzORJtxRsjahOO1eo/edit?usp=drive_link' },
-    };
-
     function parseCSV(csv) {
       const rows = [];
       const lines = csv.split('\n');
@@ -58,15 +39,8 @@ export default async function handler(req, res) {
     const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
 
     const eventos1 = parseCSV(csv1)
-      .filter(r => {
-        const v = r.__vals || Object.values(r);
-        const nome = v[0] || '';
-        return nome && nome !== 'Nome' && !nome.toLowerCase().includes('conecta d2c');
-      })
-      .map(r => {
-        const v = r.__vals || Object.values(r);
-        return { nome: v[0]||'', data: v[1]||'', dataTexto:'', responsavel: v[2]||'', tipo: (v[3]||'evento').toLowerCase(), cidade:'', uf:'', fonte:'clara' };
-      })
+      .filter(r => { const v = r.__vals||Object.values(r); const n=v[0]||''; return n&&n!=='Nome'&&!n.toLowerCase().includes('conecta d2c'); })
+      .map(r => { const v=r.__vals||Object.values(r); return {nome:v[0]||'',data:v[1]||'',dataTexto:'',responsavel:v[2]||'',tipo:(v[3]||'evento').toLowerCase(),cidade:'',uf:'',fonte:'clara'}; })
       .filter(e => e.nome);
 
     const eventos2 = parseCSV(csv2)
@@ -80,10 +54,7 @@ export default async function handler(req, res) {
       })
       .map(({ r, idx }) => {
         const v = r.__vals;
-        const lm = LINK_MAP[idx] || {};
-        if ((v[8]||'').toLowerCase().includes('belo horizonte')) {
-          console.log(`[BH-DEBUG] cols8-15: ${JSON.stringify(v.slice(8,16))}`);
-        }
+        console.log(`[MAP] idx=${idx} nome="${v[8]}" data="${v[9]}" col10="${v[10]}" col11="${v[11]}"`);
         return {
           nome: v[8]||'',
           data: v[9]||'',
@@ -92,8 +63,8 @@ export default async function handler(req, res) {
           tipo: (v[16]||'evento').toLowerCase(),
           cidade: v[20]||'',
           uf: v[21]||'',
-          inscricao: lm.i || '',
-          convidados: lm.c || '',
+          inscricao: '',
+          convidados: '',
           fonte: 'agenda'
         };
       })
@@ -107,8 +78,5 @@ export default async function handler(req, res) {
     res.setHeader('Cache-Control', 'no-store');
     res.status(200).json({ events: todos, updatedAt: new Date().toISOString(), total: todos.length, fontes: { clara: eventos1.length, agenda: eventos2.length } });
 
-  } catch(e) {
-    console.error('Eventos error:', e);
-    res.status(500).json({ error: e.message });
-  }
+  } catch(e) { console.error('Eventos error:', e); res.status(500).json({ error: e.message }); }
 }
