@@ -1,43 +1,31 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-
-export const config = { api: { bodyParser: { sizeLimit: '10mb' } } };
+export const config = { api: { bodyParser: false } };
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
   try {
-    const body = req.body || {};
-    const pdfData = body.pdfBase64 || body.base64 || body.pdf || '';
-    const sellerName = body.sellerName || '';
+    const chunks = [];
+    for await (const chunk of req) chunks.push(chunk);
+    const raw = Buffer.concat(chunks).toString();
+    console.log('[g] raw length:', raw.length, '| preview:', raw.substring(0,120));
 
-    console.log('[generate] campos recebidos:', Object.keys(body));
-    console.log('[generate] pdfData length:', pdfData.length);
+    let body = {};
+    try { body = JSON.parse(raw); } catch(e) { console.log('[g] parse error:', e.message); }
+
+    const pdfData    = body.pdfBase64 || body.base64 || body.pdf || '';
+    const sellerName = body.sellerName || body.seller || '';
+    console.log('[g] campos:', Object.keys(body), '| pdfLen:', pdfData.length);
 
     if (!pdfData) return res.status(400).json({ error: 'PDF nao recebido. Campos: ' + Object.keys(body).join(',') });
 
-    const buffer = Buffer.from(pdfData, 'base64');
-    let text = '';
-    try {
-      const pdfParse = require('pdf-parse');
-      const data = await pdfParse(buffer);
-      text = data.text;
-      console.log('[generate] pdf-parse ok, chars:', text.length);
-    } catch(e) {
-      console.log('[generate] pdf-parse falhou, usando raw:', e.message);
-      text = extractRawText(buffer);
-    }
-
+    const text   = extractRawText(Buffer.from(pdfData, 'base64'));
     const fields = extractFields(text);
-    const message = buildMessage(fields, sellerName);
+    const msg    = buildMessage(fields, sellerName);
+    console.log('[g] empresa:', fields.empresa, '| plano:', fields.plano);
 
     res.setHeader('Cache-Control', 'no-store');
-    res.status(200).json({
-      message,
-      clienteDetectado: fields.empresa || 'Cliente',
-      plano: fields.plano || ''
-    });
+    res.status(200).json({ message: msg, clienteDetectado: fields.empresa || 'Cliente', plano: fields.plano || '' });
   } catch(e) {
-    console.error('[generate] error:', e);
+    console.error('[g] error:', e.message);
     res.status(500).json({ error: e.message });
   }
 }
@@ -46,10 +34,10 @@ function extractRawText(buffer) {
   try {
     const raw = buffer.toString('latin1');
     const texts = [];
-    const re = /\(([^)\\]{2,150})\)/g;
+    const re = /\(([^)\\]{2,200})\)/g;
     let m;
     while ((m = re.exec(raw)) !== null) {
-      const t = m[1].replace(/\\n/g,'\n').replace(/\\r/g,'').trim();
+      const t = m[1].replace(/\\n/g,'\n').replace(/\\r/g,'').replace(/\\\(/g,'(').replace(/\\\)/g,')').trim();
       if (t.length > 2 && /[a-zA-ZÀ-ú]/.test(t)) texts.push(t);
     }
     return texts.join(' ');
@@ -71,17 +59,12 @@ function extractFields(text) {
     cep:        get(/CEP[:\s]*([\d]{5}-?[\d]{3})/i, /([\d]{5}-[\d]{3})/),
     cidade:     get(/Cidade[:\s]+([^\n\r,/]{3,40})/i),
     uf:         get(/(?:\bUF\b|\bEstado\b)[:\s]+([A-Z]{2})\b/i),
-    horario:    get(/(?:Horário|Horario)\s*(?:de\s*)?(?:preferência|coleta|saída)[:\s]+([^\n\r]+)/i,
-                    /Janela\s*de\s*coleta[:\s]+([^\n\r]+)/i),
-    plataforma: get(/Plataforma\s*de\s*frete[:\s]+([^\n\r|]+)/i,
-                    /(Boxlink|Intelipost|Fretebras|Frenet|Direct|Melhor\s*Envio)/i),
-    erp:        get(/ERP[:\s]+([^\n\r|]+)/i,
-                    /(Bling|Tiny|SAP|TOTVS|Omie|Netsuite|Linx|Tray|Alterdata)/i),
+    horario:    get(/(?:Horário|Horario)\s*(?:de\s*)?(?:preferência|coleta|saída)[:\s]+([^\n\r]+)/i),
+    plataforma: get(/Plataforma\s*de\s*frete[:\s]+([^\n\r|]+)/i, /(Boxlink|Intelipost|Fretebras|Frenet|Direct|Melhor\s*Envio)/i),
+    erp:        get(/ERP[:\s]+([^\n\r|]+)/i, /(Bling|Tiny|SAP|TOTVS|Omie|Netsuite|Linx|Tray|Alterdata)/i),
     tms:        get(/(?:TMS|WMS)[:\s]+([^\n\r|]+)/i),
-    lead:       get(/Origem\s*do\s*lead[:\s]+([^\n\r]+)/i,
-                    /(Nuvemshop|Shopify|VTEX|Tray|WooCommerce|Loja\s*Integrada|Mercado\s*Livre)/i),
-    meta:       get(/(?:Meta|Volume estimado|Pedidos\/mês)[:\s]+([^\n\r]+)/i,
-                    /(\d+[\s]?[aà][\s]?\d+[\s]?(?:mil|k))/i),
+    lead:       get(/Origem\s*do\s*lead[:\s]+([^\n\r]+)/i, /(Nuvemshop|Shopify|VTEX|Tray|WooCommerce|Loja\s*Integrada|Mercado\s*Livre)/i),
+    meta:       get(/(?:Meta|Volume estimado|Pedidos\/mês)[:\s]+([^\n\r]+)/i, /(\d+[\s]?[aà][\s]?\d+[\s]?(?:mil|k))/i),
   };
 }
 
@@ -93,7 +76,6 @@ function buildMessage(f, sellerName) {
   const local    = localArr.length ? localArr.join(', ') : 'A confirmar';
   const tms      = f.tms || f.plataforma || 'A confirmar';
   const metaStr  = f.meta ? ` A meta declarada é de ${f.meta} —` : '';
-
   return `---
 Pessoal, boa tarde a todos! =))
 
