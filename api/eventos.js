@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+﻿export default async function handler(req, res) {
   try {
     const ESTADOS_INCLUIR = ['SP', 'MG', 'SC'];
 
@@ -35,8 +35,12 @@ export default async function handler(req, res) {
       const u = url.trim();
       if (!u) return '';
       if (u.startsWith('http://') || u.startsWith('https://')) return u;
-      if (u.startsWith('drive.google') || u.startsWith('docs.google') ||
-          u.startsWith('luma.com')) return 'https://' + u;
+      const knownDomains = [
+        'drive.google', 'docs.google', 'forms.gle',
+        'luma.com', 'lu.ma',
+        'forms.google', 'calendar.google'
+      ];
+      if (knownDomains.some(d => u.startsWith(d))) return 'https://' + u;
       return u.startsWith('/') ? '' : u;
     }
 
@@ -54,8 +58,6 @@ export default async function handler(req, res) {
     console.log('Clara CSV tamanho:', csv1.length);
     console.log('Clara primeiras linhas:', csv1.split('\n').slice(0,5).join(' || '));
 
-    // Fonte 1 — Clara: por índice de coluna
-    // A=0 Nome, B=1 Data, C=2 Responsável, D=3 Tipo
     const eventos1 = parseCSV(csv1)
       .filter(r => {
         const v = r.__vals || Object.values(r);
@@ -79,9 +81,6 @@ export default async function handler(req, res) {
 
     console.log('Clara eventos encontrados:', eventos1.length);
 
-    // Fonte 2 — por ÍNDICE de coluna (evita problema de header)
-    // A=0 Status, H=7 Agência, I=8 Nome do Evento,
-    // J=9 Data, Q=16 Tipo, U=20 Cidade, V=21 UF
     const eventos2 = parseCSV(csv2)
       .filter(r => {
         const v = r.__vals || [];
@@ -96,6 +95,7 @@ export default async function handler(req, res) {
       })
       .map(r => {
         const v = r.__vals;
+        console.log(`[DEBUG] "${v[8]}" | col28="${v[28]}" | col29="${v[29]}" | col30="${v[30]}" | col31="${v[31]}"`);
         return {
           nome: v[8] || '',
           data: v[9] || '',
