@@ -6,9 +6,14 @@ export const config = { api: { bodyParser: { sizeLimit: '10mb' } } };
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
   try {
-    const { pdfBase64, base64, sellerName = '' } = req.body;
-    const pdfData = pdfBase64 || base64;
-    if (!pdfData) return res.status(400).json({ error: 'pdfBase64 required' });
+    const body = req.body || {};
+    const pdfData = body.pdfBase64 || body.base64 || body.pdf || '';
+    const sellerName = body.sellerName || '';
+
+    console.log('[generate] campos recebidos:', Object.keys(body));
+    console.log('[generate] pdfData length:', pdfData.length);
+
+    if (!pdfData) return res.status(400).json({ error: 'PDF nao recebido. Campos: ' + Object.keys(body).join(',') });
 
     const buffer = Buffer.from(pdfData, 'base64');
     let text = '';
@@ -16,7 +21,9 @@ export default async function handler(req, res) {
       const pdfParse = require('pdf-parse');
       const data = await pdfParse(buffer);
       text = data.text;
+      console.log('[generate] pdf-parse ok, chars:', text.length);
     } catch(e) {
+      console.log('[generate] pdf-parse falhou, usando raw:', e.message);
       text = extractRawText(buffer);
     }
 
@@ -30,7 +37,7 @@ export default async function handler(req, res) {
       plano: fields.plano || ''
     });
   } catch(e) {
-    console.error('generate error:', e);
+    console.error('[generate] error:', e);
     res.status(500).json({ error: e.message });
   }
 }
@@ -81,11 +88,11 @@ function extractFields(text) {
 const AC = v => v || 'A confirmar';
 
 function buildMessage(f, sellerName) {
-  const horario   = f.horario ? `às ${f.horario}` : 'a confirmar';
-  const localArr  = [f.endereco, f.cidade && f.uf ? `${f.cidade} - ${f.uf}` : (f.cidade||f.uf), f.cep ? `CEP: ${f.cep}` : ''].filter(Boolean);
-  const local     = localArr.length ? localArr.join(', ') : 'A confirmar';
-  const tms       = f.tms || f.plataforma || 'A confirmar';
-  const metaStr   = f.meta ? ` A meta declarada é de ${f.meta} —` : '';
+  const horario  = f.horario ? `às ${f.horario}` : 'a confirmar';
+  const localArr = [f.endereco, f.cidade && f.uf ? `${f.cidade} - ${f.uf}` : (f.cidade||f.uf), f.cep ? `CEP: ${f.cep}` : ''].filter(Boolean);
+  const local    = localArr.length ? localArr.join(', ') : 'A confirmar';
+  const tms      = f.tms || f.plataforma || 'A confirmar';
+  const metaStr  = f.meta ? ` A meta declarada é de ${f.meta} —` : '';
 
   return `---
 Pessoal, boa tarde a todos! =))
