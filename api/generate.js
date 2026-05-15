@@ -1,116 +1,108 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+export const config = { api: { bodyParser: { sizeLimit: '10mb' } } };
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
-
-  const { fileBase64, mimeType, tone, sellerName, includeNuvem, includeNext, markComercial } = req.body;
-
-  const toneMap = {
-    informal: "próximo e descontraído",
-    formal: "profissional e formal",
-    direto: "direto e objetivo"
-  };
-
-  const seller = sellerName || "Time Comercial";
-  const toneLabel = toneMap[tone] || "próximo e descontraído";
-
-  const nuvemLine = includeNuvem !== false
-    ? '• Origem do lead: [extrair da ficha se vier do Nuvem Envio / Nuvemshop]\n'
-    : '';
-
-  const nextStepsBlock = includeNext !== false ? `
-📅 *Primeira coleta:* [extrair da ficha, ou informar que aguarda confirmação]
-📈 *Rampagem:* Entendemos que a operação começa com um volume menor — sem problema! Seria muito valioso ter uma previsão semana a semana (ex: semana 1 → X pedidos, semana 2 → Y...).
-
-👉 Se estiver tudo certinho nos pontos acima, é só mandar um OK aqui no grupo pra gente seguir! Caso tenham qualquer dúvida, é só falar.
-(Por padrão do nosso sistema, se não houver pontuações em 5 dias úteis, consideramos tudo validado.)` : `
-👉 Se estiver tudo certinho nos pontos acima, é só mandar um OK aqui no grupo pra gente seguir! Caso tenham qualquer dúvida, é só falar.`;
-
-  const systemPrompt = `Você é assistente de vendas da Mandaê / Nuvem Envio.
-
-IMPORTANTE: Na primeira linha da sua resposta, antes de tudo, escreva exatamente esta linha preenchida com dados extraídos da ficha:
-DADOS:{"c":"<razão social do cliente>","p":"<plano contratado>"}
-
-Depois pule uma linha e escreva a mensagem de boas-vindas para grupo de WhatsApp seguindo EXATAMENTE este formato:
-
-Pessoal, [saudação por horário: bom dia/boa tarde/boa noite] a todos! =))
-
-Que alegria dar o pontapé inicial na nossa operação. 🚀
-
-Nós em Nuvem Envio estamos super felizes com essa parceria. Nosso maior objetivo aqui é descomplicar o dia a dia de vocês.
-Para garantirmos que nossa operação rode redondinha desde o dia 1, resumimos abaixo os nossos parâmetros de alinhamento. Dá uma conferida:
-
-📦 *Tabela de Frete:* [extrair da ficha]
-🚚 *Coleta Diária:* [extrair horário da ficha]
-📍 *Local:* [endereço completo da ficha]
-🔗 *Integrações:* [extrair da ficha]
-${nuvemLine}🛡️ *Proteção:* Seguro contra extravio habilitado para todos os pedidos.
-🔒 *Dica de Segurança:* Recomendamos que atualizem periodicamente a senha do portal Mandaê e removam/alterem logins de integração antigos, se houver.
-${nextStepsBlock}
-
-— ${seller}, Comercial Mandaê / Nuvem Envio
-
-Tom da mensagem: ${toneLabel}. Adapte o tom conforme solicitado, mantendo o formato acima.`;
-
-  const isPdf = mimeType === 'application/pdf';
-  const textBlock = {
-    type: "text",
-    text: "Extraia os dados cadastrais e gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente."
-  };
-  const fileBlock = isPdf
-    ? { type: "document", source: { type: "base64", media_type: "application/pdf", data: fileBase64 } }
-    : { type: "image",    source: { type: "base64", media_type: mimeType,            data: fileBase64 } };
-
-  const headers = {
-    "Content-Type": "application/json",
-    "x-api-key": process.env.ANTHROPIC_API_KEY,
-    "anthropic-version": "2023-06-01",
-    ...(isPdf && { "anthropic-beta": "pdfs-2024-09-25" })
-  };
-
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 1024,
-        system: systemPrompt,
-        messages: [{ role: "user", content: [fileBlock, textBlock] }]
-      })
-    });
+    const { pdfBase64, sellerName = '' } = req.body;
+    if (!pdfBase64) return res.status(400).json({ error: 'pdfBase64 required' });
 
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error?.message || `Anthropic error ${response.status}`);
-
-    const rawText = data.content?.[0]?.text || '';
-    let clienteDetectado = '';
-    let plano = '';
-    let message = rawText;
-
-    const dadosMatch = rawText.match(/^DADOS:\{"c":"([^"]*?)","p":"([^"]*?)"\}\n+/);
-    if (dadosMatch) {
-      clienteDetectado = dadosMatch[1].trim();
-      plano = dadosMatch[2].trim();
-      message = rawText.slice(dadosMatch[0].length).trim();
+    const buffer = Buffer.from(pdfBase64, 'base64');
+    let text = '';
+    try {
+      const pdfParse = require('pdf-parse');
+      const data = await pdfParse(buffer);
+      text = data.text;
+    } catch(e) {
+      text = extractRawText(buffer);
     }
 
-    if (markComercial) {
-      message = message + '\n\n@comercial';
-    }
+    const fields = extractFields(text);
+    const message = buildMessage(fields, sellerName);
 
-    res.status(200).json({ message, clienteDetectado, plano });
-  } catch (error) {
-    console.error('[generate]', error);
-    return res.status(500).json({
-      error: error.message,
-      message: 'Erro interno: ' + error.message
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(200).json({
+      message,
+      clienteDetectado: fields.empresa || 'Cliente',
+      plano: fields.plano || ''
     });
+  } catch(e) {
+    console.error('generate error:', e);
+    res.status(500).json({ error: e.message });
   }
 }
 
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-  },
-};
+function extractRawText(buffer) {
+  try {
+    const raw = buffer.toString('latin1');
+    const texts = [];
+    const re = /\(([^)\\]{2,150})\)/g;
+    let m;
+    while ((m = re.exec(raw)) !== null) {
+      const t = m[1].replace(/\\n/g,'\n').replace(/\\r/g,'').trim();
+      if (t.length > 2 && /[a-zA-ZÀ-ú]/.test(t)) texts.push(t);
+    }
+    return texts.join(' ');
+  } catch(e) { return ''; }
+}
+
+function extractFields(text) {
+  const get = (...pats) => {
+    for (const p of pats) {
+      const m = text.match(p);
+      if (m?.[1]) return m[1].trim().replace(/\s{2,}/g,' ').replace(/[*_]/g,'');
+    }
+    return '';
+  };
+  return {
+    empresa:    get(/(?:Empresa|Razão Social|Nome da empresa|Cliente)[:\s]+([^\n\r:]{3,60})/i),
+    plano:      get(/(?:Plano|Produto|Tabela de frete|Modalidade)[:\s]+([^\n\r:]+)/i),
+    endereco:   get(/(?:Endereço|Logradouro|Rua\b|Av\.)[:\s]?([^\n\r,]{5,80}(?:,\s*\d+[^\n\r]*)?)/i),
+    cep:        get(/CEP[:\s]*([\d]{5}-?[\d]{3})/i, /([\d]{5}-[\d]{3})/),
+    cidade:     get(/Cidade[:\s]+([^\n\r,/]{3,40})/i),
+    uf:         get(/(?:\bUF\b|\bEstado\b)[:\s]+([A-Z]{2})\b/i),
+    horario:    get(/(?:Horário|Horario)\s*(?:de\s*)?(?:preferência|coleta|saída)[:\s]+([^\n\r]+)/i,
+                    /Janela\s*de\s*coleta[:\s]+([^\n\r]+)/i),
+    plataforma: get(/Plataforma\s*de\s*frete[:\s]+([^\n\r|]+)/i,
+                    /(Boxlink|Intelipost|Fretebras|Frenet|Direct|Melhor\s*Envio)/i),
+    erp:        get(/ERP[:\s]+([^\n\r|]+)/i,
+                    /(Bling|Tiny|SAP|TOTVS|Omie|Netsuite|Linx|Tray|Alterdata)/i),
+    tms:        get(/(?:TMS|WMS)[:\s]+([^\n\r|]+)/i),
+    lead:       get(/Origem\s*do\s*lead[:\s]+([^\n\r]+)/i,
+                    /(Nuvemshop|Shopify|VTEX|Tray|WooCommerce|Loja\s*Integrada|Mercado\s*Livre)/i),
+    meta:       get(/(?:Meta|Volume estimado|Pedidos\/mês)[:\s]+([^\n\r]+)/i,
+                    /(\d+[\s]?[aà][\s]?\d+[\s]?(?:mil|k))/i),
+  };
+}
+
+const AC = v => v || 'A confirmar';
+
+function buildMessage(f, sellerName) {
+  const horario   = f.horario ? `às ${f.horario}` : 'a confirmar';
+  const localArr  = [f.endereco, f.cidade && f.uf ? `${f.cidade} - ${f.uf}` : (f.cidade||f.uf), f.cep ? `CEP: ${f.cep}` : ''].filter(Boolean);
+  const local     = localArr.length ? localArr.join(', ') : 'A confirmar';
+  const tms       = f.tms || f.plataforma || 'A confirmar';
+  const metaStr   = f.meta ? ` A meta declarada é de ${f.meta} —` : '';
+
+  return `---
+Pessoal, boa tarde a todos! =))
+
+Que alegria dar o pontapé inicial na nossa operação. 🚀
+Nós da Nuvem Envio estamos super felizes com essa parceria. Nosso maior objetivo aqui é descomplicar o dia a dia de vocês.
+Para garantirmos que essa operação rode redondinha desde o dia 1, resumimos abaixo os nossos parâmetros de alinhamento. Dá uma conferida:
+
+🎯 Tabela de Frete: ${AC(f.plano)} — gentileza validar com o time comercial.
+🕔 Coleta Diária: Frequência diária, com horário de preferência ${horario} (CD em funcionamento das 08h00 às 18h00).
+📍 Local: ${local}
+🔗 Integrações: Plataforma de frete: ${AC(f.plataforma)} | ERP (emissão de etiquetas): ${AC(f.erp)} | TMS/WMS: ${tms}
+- Origem do lead: ${AC(f.lead)}
+🛡️ Proteção: Seguro contra extravio habilitado para todos os pedidos.
+🔒 Dica de Segurança: Recomendamos que atualizemos periodicamente a senha do portal Mandaê e removamos/alterem logins de integração antigos, se houver.
+📅 Primeira coleta: Aguarda confirmação — por favor, nos informem a data prevista para inicio da operação.
+📈 Rampagem: Entendemos que a operação começa com um volume menor — sem problema! Seria muito valioso ter uma previsão semana a semana (ex: semana 1 → X pedidos, semana 2 → Y...).${metaStr} vamos construir essa curva juntos! 👍
+👍 Se estiver tudo certinho nos pontos acima, é só mandar um OK aqui no grupo pra gente seguir! Caso tenham qualquer dúvida, é só falar.
+(Por padrão do nosso sistema, se não houver pontuações em 5 dias úteis, consideramos tudo validado.)
+— ${sellerName || 'Comercial Mandaê / Nuvem Envio'}`;
+}
