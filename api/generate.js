@@ -1,6 +1,13 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
+  console.log('Body recebido:', {
+    mimeType: req.body?.mimeType,
+    tone: req.body?.tone,
+    sellerName: req.body?.sellerName,
+    fileBase64Length: req.body?.fileBase64?.length
+  });
+
   const { fileBase64, mimeType, tone, sellerName } = req.body;
 
   const toneMap = {
@@ -63,12 +70,17 @@ Tom da mensagem: ${toneLabel}. Adapte o tom conforme solicitado, mantendo o form
       })
     });
 
+    console.log('Anthropic status:', response.status);
     const data = await response.json();
+    console.log('Anthropic response:', JSON.stringify(data).slice(0, 500));
     const message = data.content?.[0]?.text || "Erro ao gerar mensagem.";
     res.status(200).json({ message });
-  } catch (e) {
-    console.error('Generate error:', e);
-    res.status(500).json({ error: 'Erro interno ao gerar a mensagem.' });
+  } catch (error) {
+    console.error('=== ERRO GENERATE ===', error);
+    return res.status(500).json({
+      error: error.message,
+      message: 'Erro interno: ' + error.message
+    });
   }
 }
 
