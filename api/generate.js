@@ -6,10 +6,11 @@ export const config = { api: { bodyParser: { sizeLimit: '10mb' } } };
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
   try {
-    const { pdfBase64, sellerName = '' } = req.body;
-    if (!pdfBase64) return res.status(400).json({ error: 'pdfBase64 required' });
+    const { pdfBase64, base64, sellerName = '' } = req.body;
+    const pdfData = pdfBase64 || base64;
+    if (!pdfData) return res.status(400).json({ error: 'pdfBase64 required' });
 
-    const buffer = Buffer.from(pdfBase64, 'base64');
+    const buffer = Buffer.from(pdfData, 'base64');
     let text = '';
     try {
       const pdfParse = require('pdf-parse');
