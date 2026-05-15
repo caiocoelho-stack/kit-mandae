@@ -347,17 +347,27 @@ function ToolScreen({ setRoute }) {
     setState("loading");
     setApiError(null);
     try {
+      console.log('=== INICIANDO GERAÇÃO ===');
+      console.log('File:', file?.name, file?.size);
+      console.log('SellerName:', sellerName);
+      console.log('Tone:', tone);
       const b64 = await readBase64(file);
+      console.log('Base64 length:', b64?.length);
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fileBase64: b64, mimeType: file.type || 'application/pdf', tone, sellerName })
       });
+      console.log('Response status:', res.status);
       const data = await res.json();
+      console.log('Response data:', data);
+      console.log('Message:', data?.message);
+      if (!data?.message) throw new Error('Campo message ausente: ' + JSON.stringify(data));
       if (!res.ok) throw new Error(data.error || 'Erro desconhecido');
       setGeneratedMessage(data.message);
       setState("success");
     } catch (e) {
+      console.error('=== ERRO GERAÇÃO ===', e);
       setApiError(e.message);
       setState("uploaded");
     }
