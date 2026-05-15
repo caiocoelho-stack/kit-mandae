@@ -30,6 +30,16 @@ export default async function handler(req, res) {
       return rows;
     }
 
+    function sanitizeUrl(url) {
+      if (!url) return '';
+      const u = url.trim();
+      if (!u) return '';
+      if (u.startsWith('http://') || u.startsWith('https://')) return u;
+      if (u.startsWith('drive.google') || u.startsWith('docs.google') ||
+          u.startsWith('luma.com')) return 'https://' + u;
+      return u.startsWith('/') ? '' : u;
+    }
+
     const SHEET1 = '1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw';
     const SHEET2 = '1tYtqaOxz_kHmbA54ZmbcyslNsg2eDXEAkQCF9YPu7Cc';
     const url1 = `https://docs.google.com/spreadsheets/d/${SHEET1}/gviz/tq?tqx=out:csv&sheet=Kit`;
@@ -94,8 +104,8 @@ export default async function handler(req, res) {
           tipo: (v[16] || 'evento').toLowerCase(),
           cidade: v[20] || '',
           uf: v[21] || '',
-          inscricao: v[29] || '',
-          convidados: v[30] || '',
+          inscricao: sanitizeUrl(v[29]),
+          convidados: sanitizeUrl(v[30]),
           fonte: 'agenda'
         };
       })
