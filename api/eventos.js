@@ -34,6 +34,8 @@
       if (!url) return '';
       const u = url.trim();
       if (!u) return '';
+      const naoEhUrl = ['aqui', 'clique aqui', 'link', 'acesse', 'inscricao', 'lista', 'aqui!'];
+      if (naoEhUrl.includes(u.toLowerCase())) return '';
       if (u.startsWith('http://') || u.startsWith('https://')) return u;
       const knownDomains = [
         'drive.google', 'docs.google', 'forms.gle',
@@ -135,3 +137,4 @@
     res.status(500).json({ error: e.message });
   }
 }
+
