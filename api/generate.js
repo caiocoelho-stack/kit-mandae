@@ -45,28 +45,28 @@ Para garantirmos que nossa operação rode redondinha desde o dia 1, resumimos a
 
 Tom da mensagem: ${toneLabel}. Adapte o tom conforme solicitado, mantendo o formato acima.`;
 
+  const isPdf = mimeType === 'application/pdf';
+  const textBlock = { type: "text", text: "Gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente." };
+  const fileBlock = isPdf
+    ? { type: "document", source: { type: "base64", media_type: "application/pdf", data: fileBase64 } }
+    : { type: "image",    source: { type: "base64", media_type: mimeType,            data: fileBase64 } };
+
+  const headers = {
+    "Content-Type": "application/json",
+    "x-api-key": process.env.ANTHROPIC_API_KEY,
+    "anthropic-version": "2023-06-01",
+    ...(isPdf && { "anthropic-beta": "pdfs-2024-09-25" })
+  };
+
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01"
-      },
+      headers,
       body: JSON.stringify({
         model: "claude-sonnet-4-6",
         max_tokens: 1024,
         system: systemPrompt,
-        messages: [{
-          role: "user",
-          content: [{
-            type: "image",
-            source: { type: "base64", media_type: mimeType, data: fileBase64 }
-          }, {
-            type: "text",
-            text: "Gere a mensagem de boas-vindas para o grupo do WhatsApp deste novo cliente."
-          }]
-        }]
+        messages: [{ role: "user", content: [fileBlock, textBlock] }]
       })
     });
 
