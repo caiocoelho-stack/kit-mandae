@@ -35,10 +35,14 @@ export default async function handler(req, res) {
     const url1 = `https://docs.google.com/spreadsheets/d/${SHEET1}/gviz/tq?tqx=out:csv&sheet=Kit`;
     const url2 = `https://docs.google.com/spreadsheets/d/${SHEET2}/gviz/tq?tqx=out:csv&sheet=Agenda%20Conecta%20D2C`;
 
+    console.log('Buscando Clara em:', url1);
+
     const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
     const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
 
-    console.log('Clara CSV primeiras 3 linhas:', csv1.split('\n').slice(0,3).join(' | '));
+    console.log('Clara fetch status:', r1.status);
+    console.log('Clara CSV tamanho:', csv1.length);
+    console.log('Clara primeiras linhas:', csv1.split('\n').slice(0,5).join(' || '));
 
     // Fonte 1 — Clara: datas em texto livre, aceita como dataTexto
     const eventos1 = parseCSV(csv1)
@@ -56,7 +60,7 @@ export default async function handler(req, res) {
         };
       });
 
-    console.log('Clara eventos parseados:', eventos1.length);
+    console.log('Clara eventos encontrados:', eventos1.length);
 
     // Fonte 2 — por ÍNDICE de coluna (evita problema de header)
     // A=0 Status, H=7 Agência, I=8 Nome do Evento,
