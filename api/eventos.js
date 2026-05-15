@@ -44,21 +44,25 @@ export default async function handler(req, res) {
     console.log('Clara CSV tamanho:', csv1.length);
     console.log('Clara primeiras linhas:', csv1.split('\n').slice(0,5).join(' || '));
 
-    // Fonte 1 — Clara: datas em texto livre, aceita como dataTexto
+    // Fonte 1 — Clara: por índice de coluna
+    // A=0 Nome, B=1 Data, C=2 Responsável, D=3 Tipo
     const eventos1 = parseCSV(csv1)
-      .filter(r => r['Nome'])
+      .filter(r => {
+        const v = r.__vals || Object.values(r);
+        return v[0] && v[0] !== 'Nome';
+      })
       .map(r => {
-        const dataRaw = r['Data'] || '';
-        const isDD = /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dataRaw);
+        const v = r.__vals || Object.values(r);
         return {
-          nome: r['Nome'],
-          data: isDD ? dataRaw : '',
-          dataTexto: !isDD && dataRaw ? dataRaw : '',
-          responsavel: r['Responsável'] || '',
-          tipo: (r['Tipo'] || 'evento').toLowerCase(),
+          nome: v[0] || '',
+          data: v[1] || '',
+          dataTexto: '',
+          responsavel: v[2] || '',
+          tipo: (v[3] || 'evento').toLowerCase(),
           cidade: '', uf: '', fonte: 'clara'
         };
-      });
+      })
+      .filter(e => e.nome);
 
     console.log('Clara eventos encontrados:', eventos1.length);
 
