@@ -97,7 +97,7 @@ export default async function handler(req, res) {
       return p(a.data) - p(b.data);
     });
 
-    res.setHeader('Cache-Control', 's-maxage=300');
+    res.setHeader('Cache-Control', 'no-store');
     res.status(200).json({
       events: todos,
       updatedAt: new Date().toISOString(),
