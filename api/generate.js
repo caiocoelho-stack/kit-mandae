@@ -6,10 +6,9 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
   try {
     const chunks = [];
-    for await (const chunk of req) chunks.push(chunk);
-    const raw = Buffer.concat(chunks).toString();
+    for await (const c of req) chunks.push(c);
     let body = {};
-    try { body = JSON.parse(raw); } catch(e) {}
+    try { body = JSON.parse(Buffer.concat(chunks).toString()); } catch(e) {}
 
     const pdfData    = body.fileBase64 || body.pdfBase64 || body.base64 || '';
     const sellerName = body.sellerName || '';
@@ -17,9 +16,9 @@ export default async function handler(req, res) {
 
     const text   = extractPdfText(Buffer.from(pdfData, 'base64'));
     const fields = extractFields(text);
-    const msg    = buildMessage(fields, sellerName);
-    console.log('[g] empresa:', fields.empresa, '| texto chars:', text.length);
+    console.log('[g] empresa:', fields.empresa, '| horario:', fields.horario, '| chars:', text.length);
 
+    const msg = buildMessage(fields, sellerName);
     res.setHeader('Cache-Control', 'no-store');
     res.status(200).json({ message: msg, clienteDetectado: fields.empresa || 'Cliente', plano: fields.plano || '' });
   } catch(e) {
@@ -28,73 +27,97 @@ export default async function handler(req, res) {
   }
 }
 
-function extractPdfText(buffer) {
-  const results = [];
+function extractPdfText(buf) {
+  const parts = [];
   let pos = 0;
-  while (pos < buffer.length) {
-    const streamIdx = buffer.indexOf(Buffer.from('stream'), pos);
-    if (streamIdx < 0) break;
-    let dataStart = streamIdx + 6;
-    if (buffer[dataStart] === 13) dataStart++;
-    if (buffer[dataStart] === 10) dataStart++;
-    const endIdx = buffer.indexOf(Buffer.from('endstream'), dataStart);
-    if (endIdx < 0) break;
-    const streamData = buffer.slice(dataStart, endIdx);
-    let content = '';
-    try { content = inflateSync(streamData).toString('utf8'); } catch(e) {
-      content = streamData.toString('latin1');
+  while (pos < buf.length) {
+    const si = buf.indexOf(Buffer.from('stream'), pos);
+    if (si < 0) break;
+    let ds = si + 6;
+    if (buf[ds] === 13) ds++;
+    if (buf[ds] === 10) ds++;
+    const ei = buf.indexOf(Buffer.from('endstream'), ds);
+    if (ei < 0) break;
+    const sd = buf.slice(ds, ei);
+    let txt = '';
+    try { txt = inflateSync(sd).toString('utf8'); } catch(e) {
+      try { txt = inflateSync(sd).toString('latin1'); } catch(e2) {
+        txt = sd.toString('latin1');
+      }
     }
+    // Extract strings from parentheses
     const re = /\(([^)\\]{1,400})\)/g;
     let m;
-    while ((m = re.exec(content)) !== null) {
+    while ((m = re.exec(txt)) !== null) {
       const t = m[1]
         .replace(/\\n/g,'\n').replace(/\\r/g,'').replace(/\\t/g,' ')
         .replace(/\\\\/g,'\\').replace(/\\\(/g,'(').replace(/\\\)/g,')')
         .trim();
-      if (t.length > 1 && /[a-zA-ZÀ-ú0-9]/.test(t)) results.push(t);
+      if (t.length >= 1) parts.push(t);
     }
-    pos = endIdx + 9;
+    pos = ei + 9;
   }
-  return results.join('\n');
+  // Join fragments: se muitos tokens de 1-2 chars seguidos, colapsa
+  const lines = [];
+  let cur = '';
+  for (const p of parts) {
+    if (p.length <= 2 && cur.length > 0 && cur.length <= 30) { cur += p; }
+    else { if (cur) lines.push(cur); cur = p; }
+  }
+  if (cur) lines.push(cur);
+  return lines.join('\n');
 }
 
 function extractFields(text) {
-  const get = (...pats) => {
-    for (const p of pats) {
-      const m = text.match(p);
-      if (m?.[1]) return m[1].trim().replace(/\s{2,}/g,' ').replace(/[*_]/g,'');
-    }
-    return '';
+  // next: pega a linha logo após o label
+  const next = (label) => {
+    const esc = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const m = text.match(new RegExp(esc + '[^\\n]*\\n([^\\n]+)', 'i'));
+    return m?.[1]?.trim().replace(/\s{2,}/g,' ') || '';
   };
-  return {
-    empresa:    get(/(?:Empresa|Razão Social|Nome da empresa|Cliente|Estabelecimento)[:\s\n]+([^\n\r:]{3,60})/i),
-    plano:      get(/(?:Plano|Produto|Tabela de frete|Modalidade)[:\s\n]+([^\n\r:]+)/i),
-    endereco:   get(/(?:Endereço|Logradouro|Rua\b|Av\.|Avenida)[:\s\n]?([^\n\r,]{5,80}(?:,\s*\d+[^\n\r]*)?)/i),
-    cep:        get(/CEP[:\s\n]*([\d]{5}-?[\d]{3})/i, /([\d]{5}-[\d]{3})/),
-    cidade:     get(/Cidade[:\s\n]+([^\n\r,/]{3,40})/i),
-    uf:         get(/(?:\bUF\b|\bEstado\b)[:\s\n]+([A-Z]{2})\b/i),
-    horario:    get(/(?:Horário|Horario)\s*(?:de\s*)?(?:preferência|coleta|saída)[:\s\n]+([^\n\r]+)/i,
-                    /Janela\s*de\s*coleta[:\s\n]+([^\n\r]+)/i),
-    plataforma: get(/Plataforma\s*de\s*frete[:\s\n]+([^\n\r|]+)/i,
-                    /(Boxlink|Intelipost|Fretebras|Frenet|Direct|Melhor\s*Envio)/i),
-    erp:        get(/ERP[:\s\n]+([^\n\r|]+)/i,
-                    /(Bling|Tiny|SAP|TOTVS|Omie|Netsuite|Linx|Tray|Alterdata)/i),
-    tms:        get(/(?:TMS|WMS)[:\s\n]+([^\n\r|]+)/i),
-    lead:       get(/Origem\s*do\s*lead[:\s\n]+([^\n\r]+)/i,
-                    /(Nuvemshop|Shopify|VTEX|Tray|WooCommerce|Loja\s*Integrada|Mercado\s*Livre)/i),
-    meta:       get(/(?:Meta|Volume estimado|Pedidos\/mês|Volume)[:\s\n]+([^\n\r]+)/i,
-                    /(\d+[\s]?[aà][\s]?\d+[\s]?(?:mil|k))/i),
+  // skip1: pula uma linha após o label (desc) e pega a seguinte
+  const skip1 = (label) => {
+    const esc = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const m = text.match(new RegExp(esc + '[^\\n]*\\n[^\\n]*\\n([^\\n]+)', 'i'));
+    return m?.[1]?.trim().replace(/\s{2,}/g,' ') || '';
   };
+
+  const empresaRaw = next('RAZÃO SOCIAL');
+  const leadMatch  = empresaRaw.match(/(Nuvemshop|Shopify|VTEX|Tray|WooCommerce|Loja Integrada|Mercado Livre)/i);
+  const lead       = leadMatch?.[1] || next('ORIGEM DO LEAD') || next('CANAL');
+  const empresa    = empresaRaw.replace(/\s*[-–]\s*(Nuvemshop|Shopify|VTEX|Tray|WooCommerce).*$/i,'').trim();
+
+  const horario    = next('HORÁRIO DE PREFERÊNCIA PARA COLETA');
+  const plataforma = skip1('PLATAFORMA PARA CÁLCULO DE FRETE') || next('PLATAFORMA PARA CÁLCULO DE FRETE');
+  const erp        = next('ERP PARA IMPORTAÇÃO DE PEDIDOS E EMISSÃO DE ETIQUETAS');
+  const tms        = next('OUTRA PLATAFORMA? TMS? WMS?');
+  const meta       = next('MÉDIA DE ENVIOS/MÊS');
+
+  // Endereço de coleta: skip "O mesmo para todos os CNPJs"
+  const endBlock = text.match(/ENDEREÇO DE COLETA[^\n]*\n[^\n]*\n([^\n]+)\n([^\n]+)\n([^\n]+)/i);
+  const endereco = endBlock?.[1]?.trim() || next('ENDEREÇO FISCAL');
+  const cepRaw   = skip1('CEP DE COLETA') || next('CEP DE COLETA');
+  const cep      = (cepRaw.match(/([\d]{5}-[\d]{3})/)||[])[1] || (text.match(/([\d]{5}-[\d]{3})/)||[])[1] || '';
+  const lastLine = endBlock?.[3] || '';
+  const cidade   = lastLine.split(/[-–,]/)?.[0]?.trim() || '';
+  const uf       = (lastLine.match(/\b([A-Z]{2})\s*$/)||[])[1] || '';
+
+  return { empresa, plano:'', horario, plataforma, erp, tms, meta, endereco, cep, cidade, uf, lead };
 }
 
 const AC = v => v || 'A confirmar';
 
 function buildMessage(f, sellerName) {
   const horario  = f.horario ? `às ${f.horario}` : 'a confirmar';
-  const localArr = [f.endereco, f.cidade && f.uf ? `${f.cidade} - ${f.uf}` : (f.cidade||f.uf), f.cep ? `CEP: ${f.cep}` : ''].filter(Boolean);
-  const local    = localArr.length ? localArr.join(', ') : 'A confirmar';
-  const tms      = f.tms || f.plataforma || 'A confirmar';
-  const metaStr  = f.meta ? ` A meta declarada é de ${f.meta} —` : '';
+  const localArr = [
+    f.endereco,
+    f.cidade && f.uf ? `${f.cidade} - ${f.uf}` : (f.cidade || f.uf),
+    f.cep ? `CEP: ${f.cep}` : ''
+  ].filter(Boolean);
+  const local   = localArr.length ? localArr.join(', ') : 'A confirmar';
+  const tms     = f.tms || f.plataforma || 'A confirmar';
+  const metaStr = f.meta ? ` A meta declarada é de ${f.meta} —` : '';
+
   return `---
 Pessoal, boa tarde a todos! =))
 
