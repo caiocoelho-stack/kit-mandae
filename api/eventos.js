@@ -34,8 +34,6 @@
       if (!url) return '';
       const u = url.trim();
       if (!u) return '';
-      const naoEhUrl = ['aqui', 'clique aqui', 'link', 'acesse', 'inscricao', 'lista', 'aqui!'];
-      if (naoEhUrl.includes(u.toLowerCase())) return '';
       if (u.startsWith('http://') || u.startsWith('https://')) return u;
       const knownDomains = [
         'drive.google', 'docs.google', 'forms.gle',
@@ -43,7 +41,7 @@
         'forms.google', 'calendar.google'
       ];
       if (knownDomains.some(d => u.startsWith(d))) return 'https://' + u;
-      return u.startsWith('/') ? '' : u;
+      return '';
     }
 
     const SHEET1 = '1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw';
@@ -51,22 +49,14 @@
     const url1 = `https://docs.google.com/spreadsheets/d/${SHEET1}/gviz/tq?tqx=out:csv&sheet=Kit`;
     const url2 = `https://docs.google.com/spreadsheets/d/${SHEET2}/gviz/tq?tqx=out:csv&sheet=Agenda%20Conecta%20D2C`;
 
-    console.log('Buscando Clara em:', url1);
-
     const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
     const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
-
-    console.log('Clara fetch status:', r1.status);
-    console.log('Clara CSV tamanho:', csv1.length);
-    console.log('Clara primeiras linhas:', csv1.split('\n').slice(0,5).join(' || '));
 
     const eventos1 = parseCSV(csv1)
       .filter(r => {
         const v = r.__vals || Object.values(r);
         const nome = v[0] || '';
-        return nome &&
-               nome !== 'Nome' &&
-               !nome.toLowerCase().includes('conecta d2c');
+        return nome && nome !== 'Nome' && !nome.toLowerCase().includes('conecta d2c');
       })
       .map(r => {
         const v = r.__vals || Object.values(r);
@@ -80,8 +70,6 @@
         };
       })
       .filter(e => e.nome);
-
-    console.log('Clara eventos encontrados:', eventos1.length);
 
     const eventos2 = parseCSV(csv2)
       .filter(r => {
@@ -97,7 +85,7 @@
       })
       .map(r => {
         const v = r.__vals;
-        console.log(`[DEBUG] "${v[8]}" | col28="${v[28]}" | col29="${v[29]}" | col30="${v[30]}" | col31="${v[31]}"`);
+        console.log(`[DEBUG] "${v[8]}" | col29="${v[29]}" | col30="${v[30]}"`);
         return {
           nome: v[8] || '',
           data: v[9] || '',
@@ -112,8 +100,6 @@
         };
       })
       .filter(e => e.nome);
-
-    console.log('Agenda eventos parseados:', eventos2.length);
 
     const todos = [...eventos1, ...eventos2].sort((a, b) => {
       const p = s => {
@@ -137,4 +123,3 @@
     res.status(500).json({ error: e.message });
   }
 }
-
