@@ -2,72 +2,93 @@ export default async function handler(req, res) {
   try {
     const ESTADOS_EXCLUIR = ['SP', 'MG', 'SC'];
 
-    // Fonte 1 — Planilha da Clara (aba Kit)
-    const url1 = `https://docs.google.com/spreadsheets/d/1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw/gviz/tq?tqx=out:csv&sheet=Kit`;
+    function parseCSV(csv) {
+      const rows = [];
+      const lines = csv.split('\n');
+      function parseLine(line) {
+        const cells = []; let cur = '', inQ = false;
+        for (let i = 0; i < line.length; i++) {
+          const c = line[i];
+          if (c === '"') {
+            if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+            else inQ = !inQ;
+          } else if (c === ',' && !inQ) { cells.push(cur.trim()); cur = ''; }
+          else cur += c;
+        }
+        cells.push(cur.trim());
+        return cells;
+      }
+      const headers = parseLine(lines[0]);
+      for (let i = 1; i < lines.length; i++) {
+        if (!lines[i].trim()) continue;
+        const vals = parseLine(lines[i]);
+        const obj = {};
+        headers.forEach((h, idx) => { obj[h] = vals[idx] || ''; });
+        obj.__vals = vals;
+        rows.push(obj);
+      }
+      return rows;
+    }
 
-    // Fonte 2 — Agenda Conecta D2C (exclui SP, MG, SC)
-    const url2 = `https://docs.google.com/spreadsheets/d/1tYtqaOxz_kHmbA54ZmbcyslNsg2eDXEAkQCF9YPu7Cc/gviz/tq?tqx=out:csv&sheet=Agenda%20Conecta%20D2C`;
+    const SHEET1 = '1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw';
+    const SHEET2 = '1tYtqaOxz_kHmbA54ZmbcyslNsg2eDXEAkQCF9YPu7Cc';
+    const url1 = `https://docs.google.com/spreadsheets/d/${SHEET1}/gviz/tq?tqx=out:csv&sheet=Kit`;
+    const url2 = `https://docs.google.com/spreadsheets/d/${SHEET2}/gviz/tq?tqx=out:csv&sheet=Agenda%20Conecta%20D2C`;
 
-    const parseCSV = (csv) => {
-      const lines = csv.trim().split('\n');
-      const headers = lines[0].match(/("([^"]*)"|[^,]+)/g)
-        .map(h => h.replace(/"/g, '').trim());
-      return lines.slice(1)
-        .filter(l => l.trim())
-        .map(line => {
-          const values = line.match(/("([^"]*)"|[^,]*)/g) || [];
-          const obj = {};
-          headers.forEach((h, i) => {
-            obj[h] = (values[i] || '').replace(/"/g, '').trim();
-          });
-          return obj;
-        });
-    };
+    const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
+    const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
 
-    const [res1, res2] = await Promise.all([fetch(url1), fetch(url2)]);
-    const [csv1, csv2] = await Promise.all([res1.text(), res2.text()]);
-
-    // Fonte 1: usa colunas Nome, Data, Responsável, Tipo
+    // Fonte 1 — Clara: datas em texto livre, aceita como dataTexto
     const eventos1 = parseCSV(csv1)
       .filter(r => r['Nome'])
-      .map(r => ({
-        nome: r['Nome'],
-        data: r['Data'] || 'TBD',
-        responsavel: r['Responsável'] || '',
-        tipo: r['Tipo'] || 'evento',
-        cidade: '',
-        uf: '',
-        fonte: 'clara'
-      }));
+      .map(r => {
+        const dataRaw = r['Data'] || '';
+        const isDD = /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dataRaw);
+        return {
+          nome: r['Nome'],
+          data: isDD ? dataRaw : '',
+          dataTexto: !isDD && dataRaw ? dataRaw : '',
+          responsavel: r['Responsável'] || '',
+          tipo: (r['Tipo'] || 'evento').toLowerCase(),
+          cidade: '', uf: '', fonte: 'clara'
+        };
+      });
 
-    // Fonte 2: usa colunas Nome do Evento, Data, Agência,
-    // Tipo, Cidade, UF — exclui SP/MG/SC e Cancelados
+    // Fonte 2 — por ÍNDICE de coluna (evita problema de header)
+    // A=0 Status, H=7 Agência, I=8 Nome do Evento,
+    // J=9 Data, Q=16 Tipo, U=20 Cidade, V=21 UF
     const eventos2 = parseCSV(csv2)
       .filter(r => {
-        const uf = (r['UF'] || r['Estado'] || '').trim().toUpperCase();
-        const status = (r['Status'] || '').toLowerCase();
-        return r['Nome do Evento'] &&
-               !ESTADOS_EXCLUIR.includes(uf) &&
-               status !== 'cancelado';
+        const v = r.__vals || [];
+        const status = (v[0] || '').toLowerCase();
+        const nome = v[8] || '';
+        const uf = (v[21] || '').trim().toUpperCase();
+        return nome &&
+          !['cancelado','recusado','declinado'].includes(status) &&
+          !ESTADOS_EXCLUIR.includes(uf);
       })
-      .map(r => ({
-        nome: r['Nome do Evento'],
-        data: r['Data'] || 'TBD',
-        responsavel: r['Agência'] || '',
-        tipo: (r['Tipo'] || 'evento').toLowerCase(),
-        cidade: r['Cidade'] || '',
-        uf: r['UF'] || r['Estado'] || '',
-        fonte: 'agenda'
-      }));
+      .map(r => {
+        const v = r.__vals;
+        return {
+          nome: v[8] || '',
+          data: v[9] || '',
+          dataTexto: '',
+          responsavel: v[7] || '',
+          tipo: (v[16] || 'evento').toLowerCase(),
+          cidade: v[20] || '',
+          uf: v[21] || '',
+          fonte: 'agenda'
+        };
+      })
+      .filter(e => e.nome);
 
-    // Mescla e ordena por data
     const todos = [...eventos1, ...eventos2].sort((a, b) => {
-      const parseD = s => {
-        if (!s || s === 'TBD') return Infinity;
-        const [d, m, y] = s.split('/');
-        return new Date(y, m - 1, d).getTime();
+      const p = s => {
+        if (!s) return Infinity;
+        const [d,m,y] = s.split('/');
+        return new Date(+y, +m-1, +d).getTime();
       };
-      return parseD(a.data) - parseD(b.data);
+      return p(a.data) - p(b.data);
     });
 
     res.setHeader('Cache-Control', 's-maxage=300');
@@ -78,7 +99,7 @@ export default async function handler(req, res) {
       fontes: { clara: eventos1.length, agenda: eventos2.length }
     });
 
-  } catch (e) {
+  } catch(e) {
     console.error('Eventos error:', e);
     res.status(500).json({ error: e.message });
   }
