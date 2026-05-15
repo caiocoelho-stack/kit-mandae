@@ -49,56 +49,30 @@ export default async function handler(req, res) {
     const [r1, r2csv, r2html] = await Promise.all([fetch(url1), fetch(url2csv), fetch(url2html)]);
     const [csv1, csv2, html2] = await Promise.all([r1.text(), r2csv.text(), r2html.text()]);
 
-    // DIAGNOSTICO HTML
-    console.log('[HTML] status:', r2html.status);
-    console.log('[HTML] tamanho:', html2.length);
-    console.log('[HTML] tem href:', html2.includes('href'));
-    console.log('[HTML] qtd <tr>:', (html2.match(/<tr/gi)||[]).length);
-    console.log('[HTML] primeiros 1000 chars:', html2.substring(0, 1000));
+    // DIAGNOSTICO
+    const trMatches = html2.match(/<tr[\s\S]*?<\/tr>/gi) || [];
+    console.log('[H1] html-status:', r2html.status, '| tem-href:', html2.includes('href'), '| tr-count:', trMatches.length);
+    if (trMatches[1]) {
+      const tds = trMatches[1].match(/<td[\s\S]*?<\/td>/gi) || [];
+      console.log('[H2] row1-td-count:', tds.length);
+      console.log('[H3] col29:', (tds[29] || 'VAZIO').substring(0, 300));
+      console.log('[H4] col30:', (tds[30] || 'VAZIO').substring(0, 300));
+    }
 
     const eventos1 = parseCSV(csv1)
-      .filter(r => {
-        const v = r.__vals || Object.values(r);
-        const nome = v[0] || '';
-        return nome && nome !== 'Nome' && !nome.toLowerCase().includes('conecta d2c');
-      })
-      .map(r => {
-        const v = r.__vals || Object.values(r);
-        return { nome: v[0]||'', data: v[1]||'', dataTexto:'', responsavel: v[2]||'', tipo: (v[3]||'evento').toLowerCase(), cidade:'', uf:'', fonte:'clara' };
-      })
+      .filter(r => { const v = r.__vals||Object.values(r); const n=v[0]||''; return n&&n!=='Nome'&&!n.toLowerCase().includes('conecta d2c'); })
+      .map(r => { const v=r.__vals||Object.values(r); return {nome:v[0]||'',data:v[1]||'',dataTexto:'',responsavel:v[2]||'',tipo:(v[3]||'evento').toLowerCase(),cidade:'',uf:'',fonte:'clara'}; })
       .filter(e => e.nome);
 
-    const allRows2 = parseCSV(csv2);
-
-    const eventos2 = allRows2
-      .map((r, idx) => ({ r, idx }))
-      .filter(({ r }) => {
-        const v = r.__vals || [];
-        return v[8] && (v[0]||'').toLowerCase() === 'em andamento' && (v[3]||'').toLowerCase() === 'sim' && ESTADOS_INCLUIR.includes((v[21]||'').trim().toUpperCase());
-      })
-      .map(({ r, idx }) => {
-        const v = r.__vals;
-        return {
-          nome: v[8]||'', data: v[9]||'', dataTexto:'',
-          responsavel: v[35]||v[7]||'', tipo: (v[16]||'evento').toLowerCase(),
-          cidade: v[20]||'', uf: v[21]||'',
-          inscricao: sanitizeUrl(v[29]),
-          convidados: sanitizeUrl(v[30]),
-          fonte: 'agenda'
-        };
-      })
+    const eventos2 = parseCSV(csv2)
+      .filter(r => { const v=r.__vals||[]; return v[8]&&(v[0]||'').toLowerCase()==='em andamento'&&(v[3]||'').toLowerCase()==='sim'&&ESTADOS_INCLUIR.includes((v[21]||'').trim().toUpperCase()); })
+      .map(r => { const v=r.__vals; return {nome:v[8]||'',data:v[9]||'',dataTexto:'',responsavel:v[35]||v[7]||'',tipo:(v[16]||'evento').toLowerCase(),cidade:v[20]||'',uf:v[21]||'',inscricao:sanitizeUrl(v[29]),convidados:sanitizeUrl(v[30]),fonte:'agenda'}; })
       .filter(e => e.nome);
 
-    const todos = [...eventos1, ...eventos2].sort((a, b) => {
-      const p = s => { if (!s) return Infinity; const [d,m,y] = s.split('/'); return new Date(+y,+m-1,+d).getTime(); };
-      return p(a.data) - p(b.data);
-    });
+    const todos = [...eventos1, ...eventos2].sort((a,b) => { const p=s=>{if(!s)return Infinity;const[d,m,y]=s.split('/');return new Date(+y,+m-1,+d).getTime();}; return p(a.data)-p(b.data); });
 
-    res.setHeader('Cache-Control', 'no-store');
-    res.status(200).json({ events: todos, updatedAt: new Date().toISOString(), total: todos.length, fontes: { clara: eventos1.length, agenda: eventos2.length } });
+    res.setHeader('Cache-Control','no-store');
+    res.status(200).json({events:todos,updatedAt:new Date().toISOString(),total:todos.length,fontes:{clara:eventos1.length,agenda:eventos2.length}});
 
-  } catch(e) {
-    console.error('Eventos error:', e);
-    res.status(500).json({ error: e.message });
-  }
+  } catch(e) { console.error('Eventos error:',e); res.status(500).json({error:e.message}); }
 }
