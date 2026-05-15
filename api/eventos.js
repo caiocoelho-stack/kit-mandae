@@ -40,31 +40,6 @@ export default async function handler(req, res) {
       return '';
     }
 
-    function parseHtmlLinks(html) {
-      const result = [];
-      const trMatches = html.match(/<tr[\s\S]*?<\/tr>/gi) || [];
-      trMatches.forEach((tr, i) => {
-        if (i === 0) return;
-        const tdMatches = tr.match(/<td[\s\S]*?<\/td>/gi) || [];
-        const getHref = (td) => {
-          if (!td) return '';
-          const m = td.match(/href="([^"]+)"/i);
-          if (!m) return '';
-          let url = decodeURIComponent(m[1]);
-          if (url.includes('google.com/url')) {
-            const q = url.match(/[?&]q=([^&]+)/);
-            if (q) url = decodeURIComponent(q[1]);
-          }
-          return url.startsWith('http') ? url : '';
-        };
-        result.push({
-          inscricao: getHref(tdMatches[29]),
-          convidados: getHref(tdMatches[30])
-        });
-      });
-      return result;
-    }
-
     const SHEET1 = '1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw';
     const SHEET2 = '1tYtqaOxz_kHmbA54ZmbcyslNsg2eDXEAkQCF9YPu7Cc';
     const url1    = `https://docs.google.com/spreadsheets/d/${SHEET1}/gviz/tq?tqx=out:csv&sheet=Kit`;
@@ -74,7 +49,12 @@ export default async function handler(req, res) {
     const [r1, r2csv, r2html] = await Promise.all([fetch(url1), fetch(url2csv), fetch(url2html)]);
     const [csv1, csv2, html2] = await Promise.all([r1.text(), r2csv.text(), r2html.text()]);
 
-    console.log('Clara fetch status:', r1.status);
+    // DIAGNOSTICO HTML
+    console.log('[HTML] status:', r2html.status);
+    console.log('[HTML] tamanho:', html2.length);
+    console.log('[HTML] tem href:', html2.includes('href'));
+    console.log('[HTML] qtd <tr>:', (html2.match(/<tr/gi)||[]).length);
+    console.log('[HTML] primeiros 1000 chars:', html2.substring(0, 1000));
 
     const eventos1 = parseCSV(csv1)
       .filter(r => {
@@ -84,69 +64,38 @@ export default async function handler(req, res) {
       })
       .map(r => {
         const v = r.__vals || Object.values(r);
-        return {
-          nome: v[0] || '',
-          data: v[1] || '',
-          dataTexto: '',
-          responsavel: v[2] || '',
-          tipo: (v[3] || 'evento').toLowerCase(),
-          cidade: '', uf: '', fonte: 'clara'
-        };
+        return { nome: v[0]||'', data: v[1]||'', dataTexto:'', responsavel: v[2]||'', tipo: (v[3]||'evento').toLowerCase(), cidade:'', uf:'', fonte:'clara' };
       })
       .filter(e => e.nome);
 
-    const allRows2  = parseCSV(csv2);
-    const htmlLinks = parseHtmlLinks(html2);
+    const allRows2 = parseCSV(csv2);
 
     const eventos2 = allRows2
       .map((r, idx) => ({ r, idx }))
       .filter(({ r }) => {
         const v = r.__vals || [];
-        const status    = (v[0]  || '').toLowerCase();
-        const confirmado= (v[3]  || '').toLowerCase();
-        const nome      =  v[8]  || '';
-        const uf        = (v[21] || '').trim().toUpperCase();
-        return nome && status === 'em andamento' && confirmado === 'sim' && ESTADOS_INCLUIR.includes(uf);
+        return v[8] && (v[0]||'').toLowerCase() === 'em andamento' && (v[3]||'').toLowerCase() === 'sim' && ESTADOS_INCLUIR.includes((v[21]||'').trim().toUpperCase());
       })
       .map(({ r, idx }) => {
-        const v      = r.__vals;
-        const links  = htmlLinks[idx] || {};
-        const inscricao  = links.inscricao  || sanitizeUrl(v[29]);
-        const convidados = links.convidados || sanitizeUrl(v[30]);
-        console.log(`[DEBUG] "${v[8]}" | inscricao="${inscricao}" | convidados="${convidados}"`);
+        const v = r.__vals;
         return {
-          nome: v[8] || '',
-          data: v[9] || '',
-          dataTexto: '',
-          responsavel: v[35] || v[7] || '',
-          tipo: (v[16] || 'evento').toLowerCase(),
-          cidade: v[20] || '',
-          uf: v[21] || '',
-          inscricao,
-          convidados,
+          nome: v[8]||'', data: v[9]||'', dataTexto:'',
+          responsavel: v[35]||v[7]||'', tipo: (v[16]||'evento').toLowerCase(),
+          cidade: v[20]||'', uf: v[21]||'',
+          inscricao: sanitizeUrl(v[29]),
+          convidados: sanitizeUrl(v[30]),
           fonte: 'agenda'
         };
       })
       .filter(e => e.nome);
 
-    console.log('Agenda eventos parseados:', eventos2.length);
-
     const todos = [...eventos1, ...eventos2].sort((a, b) => {
-      const p = s => {
-        if (!s) return Infinity;
-        const [d,m,y] = s.split('/');
-        return new Date(+y, +m-1, +d).getTime();
-      };
+      const p = s => { if (!s) return Infinity; const [d,m,y] = s.split('/'); return new Date(+y,+m-1,+d).getTime(); };
       return p(a.data) - p(b.data);
     });
 
     res.setHeader('Cache-Control', 'no-store');
-    res.status(200).json({
-      events: todos,
-      updatedAt: new Date().toISOString(),
-      total: todos.length,
-      fontes: { clara: eventos1.length, agenda: eventos2.length }
-    });
+    res.status(200).json({ events: todos, updatedAt: new Date().toISOString(), total: todos.length, fontes: { clara: eventos1.length, agenda: eventos2.length } });
 
   } catch(e) {
     console.error('Eventos error:', e);
