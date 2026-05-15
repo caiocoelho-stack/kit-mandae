@@ -2,7 +2,6 @@ export default async function handler(req, res) {
   try {
     const ESTADOS_INCLUIR = ['SP', 'MG', 'SC'];
 
-    // Links extraidos do xlsx — indice corresponde a linha da planilha (base 0, sem header)
     const LINK_MAP = {
       0:  { i: 'https://luma.com/xy1ar15j', c: 'https://docs.google.com/spreadsheets/d/1OIJsZNY2y80HG9PUo7XtIc8Sa8yWyexn/edit?usp=sharing' },
       1:  { i: 'https://www.sympla.com.br/evento/conecta-by-pandorium---edicao-belo-horizonte/3422861?d=NUVEM100', c: 'https://docs.google.com/spreadsheets/d/1eAtSuGokLlXUPzpuqXaJfaCSWZ-75CXgNEwZ3Mzq-lQ/edit?usp=sharing' },
@@ -82,7 +81,9 @@ export default async function handler(req, res) {
       .map(({ r, idx }) => {
         const v = r.__vals;
         const lm = LINK_MAP[idx] || {};
-        console.log(`[OK] "${v[8]}" idx=${idx} | i="${lm.i||''}" | c="${lm.c||''}"`);
+        if ((v[8]||'').toLowerCase().includes('belo horizonte')) {
+          console.log(`[BH-DEBUG] cols8-15: ${JSON.stringify(v.slice(8,16))}`);
+        }
         return {
           nome: v[8]||'',
           data: v[9]||'',
@@ -97,8 +98,6 @@ export default async function handler(req, res) {
         };
       })
       .filter(e => e.nome);
-
-    console.log('Agenda eventos parseados:', eventos2.length);
 
     const todos = [...eventos1, ...eventos2].sort((a, b) => {
       const p = s => { if (!s) return Infinity; const [d,m,y] = s.split('/'); return new Date(+y,+m-1,+d).getTime(); };
