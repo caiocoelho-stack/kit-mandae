@@ -16,6 +16,7 @@ export default async function handler(req, res) {
 
     const text   = extractPdfText(Buffer.from(pdfData, 'base64'));
     const fields = extractFields(text);
+    console.log('[g] TEXT:', text.substring(0,1000));
     console.log('[g] empresa:', fields.empresa, '| horario:', fields.horario, '| chars:', text.length);
 
     const msg = buildMessage(fields, sellerName);
@@ -138,3 +139,4 @@ Para garantirmos que essa operação rode redondinha desde o dia 1, resumimos ab
 (Por padrão do nosso sistema, se não houver pontuações em 5 dias úteis, consideramos tudo validado.)
 — ${sellerName || 'Comercial Mandaê / Nuvem Envio'}`;
 }
+
