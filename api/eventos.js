@@ -49,7 +49,10 @@ export default async function handler(req, res) {
     const eventos1 = parseCSV(csv1)
       .filter(r => {
         const v = r.__vals || Object.values(r);
-        return v[0] && v[0] !== 'Nome';
+        const nome = v[0] || '';
+        return nome &&
+               nome !== 'Nome' &&
+               !nome.toLowerCase().includes('conecta d2c');
       })
       .map(r => {
         const v = r.__vals || Object.values(r);
@@ -73,10 +76,12 @@ export default async function handler(req, res) {
       .filter(r => {
         const v = r.__vals || [];
         const status = (v[0] || '').toLowerCase();
+        const confirmado = (v[3] || '').toLowerCase();
         const nome = v[8] || '';
         const uf = (v[21] || '').trim().toUpperCase();
         return nome &&
-          !['cancelado','recusado','declinado'].includes(status) &&
+          status === 'em andamento' &&
+          confirmado === 'sim' &&
           ESTADOS_INCLUIR.includes(uf);
       })
       .map(r => {
@@ -85,10 +90,12 @@ export default async function handler(req, res) {
           nome: v[8] || '',
           data: v[9] || '',
           dataTexto: '',
-          responsavel: v[7] || '',
+          responsavel: v[35] || v[7] || '',
           tipo: (v[16] || 'evento').toLowerCase(),
           cidade: v[20] || '',
           uf: v[21] || '',
+          inscricao: v[29] || '',
+          convidados: v[30] || '',
           fonte: 'agenda'
         };
       })
