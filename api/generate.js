@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     let body = {};
     try { body = JSON.parse(raw); } catch(e) { console.log('[g] parse error:', e.message); }
 
-    const pdfData    = body.pdfBase64 || body.base64 || body.pdf || '';
+    const pdfData    = body.fileBase64 || body.pdfBase64 || body.base64 || body.pdf || '';
     const sellerName = body.sellerName || body.seller || '';
     console.log('[g] campos:', Object.keys(body), '| pdfLen:', pdfData.length);
 
