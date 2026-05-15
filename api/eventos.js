@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   try {
-    const ESTADOS_EXCLUIR = ['SP', 'MG', 'SC'];
+    const ESTADOS_INCLUIR = ['SP', 'MG', 'SC'];
 
     function parseCSV(csv) {
       const rows = [];
@@ -38,6 +38,8 @@ export default async function handler(req, res) {
     const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
     const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
 
+    console.log('Clara CSV primeiras 3 linhas:', csv1.split('\n').slice(0,3).join(' | '));
+
     // Fonte 1 — Clara: datas em texto livre, aceita como dataTexto
     const eventos1 = parseCSV(csv1)
       .filter(r => r['Nome'])
@@ -54,6 +56,8 @@ export default async function handler(req, res) {
         };
       });
 
+    console.log('Clara eventos parseados:', eventos1.length);
+
     // Fonte 2 — por ÍNDICE de coluna (evita problema de header)
     // A=0 Status, H=7 Agência, I=8 Nome do Evento,
     // J=9 Data, Q=16 Tipo, U=20 Cidade, V=21 UF
@@ -65,7 +69,7 @@ export default async function handler(req, res) {
         const uf = (v[21] || '').trim().toUpperCase();
         return nome &&
           !['cancelado','recusado','declinado'].includes(status) &&
-          !ESTADOS_EXCLUIR.includes(uf);
+          ESTADOS_INCLUIR.includes(uf);
       })
       .map(r => {
         const v = r.__vals;
@@ -81,6 +85,8 @@ export default async function handler(req, res) {
         };
       })
       .filter(e => e.nome);
+
+    console.log('Agenda eventos parseados:', eventos2.length);
 
     const todos = [...eventos1, ...eventos2].sort((a, b) => {
       const p = s => {
