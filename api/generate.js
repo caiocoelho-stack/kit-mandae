@@ -1,5 +1,3 @@
-﻿import { inflateSync } from 'zlib';
-
 export const config = { api: { bodyParser: false } };
 
 export default async function handler(req, res) {
@@ -14,10 +12,8 @@ export default async function handler(req, res) {
     const sellerName = body.sellerName || '';
     if (!pdfData) return res.status(400).json({ error: 'PDF nao recebido' });
 
-    const text   = extractPdfText(Buffer.from(pdfData, 'base64'));
-    const fields = extractFields(text);
-    console.log('[g] TEXT:', text.substring(0,1000));
-    console.log('[g] empresa:', fields.empresa, '| horario:', fields.horario, '| chars:', text.length);
+    const fields = await extractFields(pdfData);
+    console.log('[g] empresa:', fields.empresa, '| horario:', fields.horario);
 
     const msg = buildMessage(fields, sellerName);
     res.setHeader('Cache-Control', 'no-store');
@@ -28,82 +24,31 @@ export default async function handler(req, res) {
   }
 }
 
-function extractPdfText(buf) {
-  const parts = [];
-  let pos = 0;
-  while (pos < buf.length) {
-    const si = buf.indexOf(Buffer.from('stream'), pos);
-    if (si < 0) break;
-    let ds = si + 6;
-    if (buf[ds] === 13) ds++;
-    if (buf[ds] === 10) ds++;
-    const ei = buf.indexOf(Buffer.from('endstream'), ds);
-    if (ei < 0) break;
-    const sd = buf.slice(ds, ei);
-    let txt = '';
-    try { txt = inflateSync(sd).toString('utf8'); } catch(e) {
-      try { txt = inflateSync(sd).toString('latin1'); } catch(e2) {
-        txt = sd.toString('latin1');
-      }
-    }
-    // Extract strings from parentheses
-    const re = /\(([^)\\]{1,400})\)/g;
-    let m;
-    while ((m = re.exec(txt)) !== null) {
-      const t = m[1]
-        .replace(/\\n/g,'\n').replace(/\\r/g,'').replace(/\\t/g,' ')
-        .replace(/\\\\/g,'\\').replace(/\\\(/g,'(').replace(/\\\)/g,')')
-        .trim();
-      if (t.length >= 1) parts.push(t);
-    }
-    pos = ei + 9;
-  }
-  // Join fragments: se muitos tokens de 1-2 chars seguidos, colapsa
-  const lines = [];
-  let cur = '';
-  for (const p of parts) {
-    if (p.length <= 2 && cur.length > 0 && cur.length <= 30) { cur += p; }
-    else { if (cur) lines.push(cur); cur = p; }
-  }
-  if (cur) lines.push(cur);
-  return lines.join('\n');
-}
-
-function extractFields(text) {
-  // next: pega a linha logo após o label
-  const next = (label) => {
-    const esc = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const m = text.match(new RegExp(esc + '[^\\n]*\\n([^\\n]+)', 'i'));
-    return m?.[1]?.trim().replace(/\s{2,}/g,' ') || '';
-  };
-  // skip1: pula uma linha após o label (desc) e pega a seguinte
-  const skip1 = (label) => {
-    const esc = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const m = text.match(new RegExp(esc + '[^\\n]*\\n[^\\n]*\\n([^\\n]+)', 'i'));
-    return m?.[1]?.trim().replace(/\s{2,}/g,' ') || '';
-  };
-
-  const empresaRaw = next('RAZÃO SOCIAL');
-  const leadMatch  = empresaRaw.match(/(Nuvemshop|Shopify|VTEX|Tray|WooCommerce|Loja Integrada|Mercado Livre)/i);
-  const lead       = leadMatch?.[1] || next('ORIGEM DO LEAD') || next('CANAL');
-  const empresa    = empresaRaw.replace(/\s*[-–]\s*(Nuvemshop|Shopify|VTEX|Tray|WooCommerce).*$/i,'').trim();
-
-  const horario    = next('HORÁRIO DE PREFERÊNCIA PARA COLETA');
-  const plataforma = skip1('PLATAFORMA PARA CÁLCULO DE FRETE') || next('PLATAFORMA PARA CÁLCULO DE FRETE');
-  const erp        = next('ERP PARA IMPORTAÇÃO DE PEDIDOS E EMISSÃO DE ETIQUETAS');
-  const tms        = next('OUTRA PLATAFORMA? TMS? WMS?');
-  const meta       = next('MÉDIA DE ENVIOS/MÊS');
-
-  // Endereço de coleta: skip "O mesmo para todos os CNPJs"
-  const endBlock = text.match(/ENDEREÇO DE COLETA[^\n]*\n[^\n]*\n([^\n]+)\n([^\n]+)\n([^\n]+)/i);
-  const endereco = endBlock?.[1]?.trim() || next('ENDEREÇO FISCAL');
-  const cepRaw   = skip1('CEP DE COLETA') || next('CEP DE COLETA');
-  const cep      = (cepRaw.match(/([\d]{5}-[\d]{3})/)||[])[1] || (text.match(/([\d]{5}-[\d]{3})/)||[])[1] || '';
-  const lastLine = endBlock?.[3] || '';
-  const cidade   = lastLine.split(/[-–,]/)?.[0]?.trim() || '';
-  const uf       = (lastLine.match(/\b([A-Z]{2})\s*$/)||[])[1] || '';
-
-  return { empresa, plano:'', horario, plataforma, erp, tms, meta, endereco, cep, cidade, uf, lead };
+async function extractFields(pdfBase64) {
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01',
+      'anthropic-beta': 'pdfs-2024-09-25'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 300,
+      messages: [{
+        role: 'user',
+        content: [
+          { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: pdfBase64 } },
+          { type: 'text', text: 'Extraia os campos desta ficha cadastral. Retorne SOMENTE JSON valido, sem markdown:\n{"empresa":"","plano":"","horario":"","plataforma":"","erp":"","tms":"","lead":"","meta":"","endereco":"","cep":"","cidade":"","uf":""}\nMapeamento: empresa=RAZAO SOCIAL, plano=tabela de frete se houver, horario=HORARIO DE PREFERENCIA PARA COLETA, plataforma=PLATAFORMA PARA CALCULO DE FRETE, erp=ERP PARA IMPORTACAO DE PEDIDOS, tms=OUTRA PLATAFORMA TMS WMS, lead=plataforma de venda extraida do nome da empresa ou campo especifico, meta=MEDIA DE ENVIOS/MES, endereco=ENDERECO DE COLETA, cep=CEP DE COLETA, cidade e uf do endereco de coleta.' }
+        ]
+      }]
+    })
+  });
+  const data = await r.json();
+  const text = data.content?.[0]?.text || '{}';
+  try { return JSON.parse(text.replace(/```json|```/g,'').trim()); }
+  catch(e) { console.error('[g] json parse error:', text); return {}; }
 }
 
 const AC = v => v || 'A confirmar';
@@ -139,4 +84,3 @@ Para garantirmos que essa operação rode redondinha desde o dia 1, resumimos ab
 (Por padrão do nosso sistema, se não houver pontuações em 5 dias úteis, consideramos tudo validado.)
 — ${sellerName || 'Comercial Mandaê / Nuvem Envio'}`;
 }
-
