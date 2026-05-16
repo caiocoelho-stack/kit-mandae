@@ -17,10 +17,11 @@ export default async function handler(req, res) {
       })
     });
     const data = await r.json();
-    console.log('[jira] status:', r.status, '| body:', JSON.stringify(data).substring(0, 600));
-    if (!r.ok) return res.status(500).json({ issues: [], error: JSON.stringify(data.errorMessages) });
+    console.log('[jira] status:', r.status);
+    console.log('[jira] body:', JSON.stringify(data).substring(0, 800));
+    const issues = data.issues || data.values || [];
     res.setHeader('Cache-Control', 'max-age=300');
-    res.status(200).json(data);
+    res.status(200).json({ ...data, issues });
   } catch(e) {
     console.error('[jira]', e.message);
     res.status(500).json({ issues: [], error: e.message });
