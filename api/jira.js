@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       })
     });
     const data = await r.json();
-    console.log('[jira] status:', r.status, '| total:', data.total, '| issues:', data.issues?.length);
+    console.log('[jira] status:', r.status, '| body:', JSON.stringify(data).substring(0, 600));
     if (!r.ok) return res.status(500).json({ issues: [], error: JSON.stringify(data.errorMessages) });
     res.setHeader('Cache-Control', 'max-age=300');
     res.status(200).json(data);
