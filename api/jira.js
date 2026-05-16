@@ -9,6 +9,7 @@ export default async function handler(req, res) {
     });
     if (!r.ok) { console.error('[jira]', r.status, await r.text()); return res.status(500).json({ issues: [], error: 'Jira API error' }); }
     const data = await r.json();
+    console.log('[jira] total:', data.total, '| issues:', data.issues?.length, '| error:', data.errorMessages);
     res.setHeader('Cache-Control', 'max-age=300');
     res.status(200).json(data);
   } catch(e) {
