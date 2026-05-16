@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        jql: 'project = "INT" AND status = "Aguardando Comercial" AND created <= "-5d" ORDER BY created ASC',
+        jql: 'project = "INT" AND status = "Aguardando Comercial" AND created <= "-20d" ORDER BY created ASC',
         maxResults: 50,
         fields: ['summary', 'assignee', 'reporter', 'updated', 'created', 'comment']
       })
