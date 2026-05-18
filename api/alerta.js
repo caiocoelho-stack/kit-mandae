@@ -2,6 +2,15 @@ const KV_URL = process.env.KV_REST_API_URL;
 const KV_TOKEN = process.env.KV_REST_API_TOKEN;
 const CACHE_KEY = "alerta_diario";
 
+const FEEDS = [
+  'https://www.ecommercebrasil.com.br/feed/rss/?post_type=noticias',
+  'https://www.ecommercebrasil.com.br/feed/rss/?post_type=artigos',
+  'https://mercadoeconsumo.com.br/feed/',
+  'https://www.logisticadescomplicada.com/feed/',
+  'https://www.nuvemshop.com.br/blog/feed/',
+  'https://canaltech.com.br/rss/',
+];
+
 async function kvCmd(cmd) {
   const r = await fetch(KV_URL, {
     method: 'POST',
@@ -16,15 +25,8 @@ async function kvGet(key) {
   if (!KV_URL || !KV_TOKEN) return null;
   const result = await kvCmd(['GET', key]);
   if (!result) return null;
-  // Upstash auto-parseia JSON — result pode ser objeto ou string
-  if (typeof result === 'string') {
-    try { return JSON.parse(result); } catch { return null; }
-  }
-  // Formato antigo: { value: "...", ex: N }
-  if (result.value !== undefined && result.date === undefined) {
-    try { return JSON.parse(result.value); } catch { return null; }
-  }
-  // Formato novo: ja e o objeto correto { date: "...", data: {...} }
+  if (typeof result === 'string') { try { return JSON.parse(result); } catch { return null; } }
+  if (result.value !== undefined && result.date === undefined) { try { return JSON.parse(result.value); } catch { return null; } }
   return result;
 }
 
@@ -33,37 +35,63 @@ async function kvSet(key, value, ex = 90000) {
   await kvCmd(['SETEX', key, String(ex), JSON.stringify(value)]);
 }
 
-const SYSTEM = `Voce e analista de mercado especializado em e-commerce e logistica no Brasil, escrevendo para vendedores da Mandae/Nuvem Envio. Objetivo: encontrar UMA noticia ou tendencia das ultimas 48h. Responda APENAS neste JSON sem texto fora: {"titulo":"","o_que_esta_acontecendo":"","por_que_importa":"","gancho_para_call":"","fonte":"","data_busca":""}`;
-const USER = `Busque noticias recentes sobre e-commerce e logistica no Brasil (ultimas 48h). Selecione a mais relevante para vendedores negociando com lojistas agora.`;
-
-async function callClaude(apiKey, retryCount = 0) {
-  let messages = [{ role: 'user', content: USER }];
-  for (let turn = 0; turn < 3; turn++) {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-beta': 'web-search-2025-03-05' },
-      body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1024, system: SYSTEM, tools: [{ type: 'web_search_20250305', name: 'web_search' }], messages })
-    });
-    if (r.status === 429) {
-      if (retryCount >= 1) throw new Error('Rate limit — tente amanha');
-      await new Promise(res => setTimeout(res, 15000));
-      return callClaude(apiKey, retryCount + 1);
-    }
-    if (!r.ok) throw new Error(`Claude API ${r.status}: ${await r.text()}`);
-    const d = await r.json();
-    if (d.stop_reason === 'end_turn') {
-      const t = d.content.filter(b => b.type === 'text');
-      return t[t.length - 1]?.text ?? '';
-    }
-    if (d.stop_reason === 'tool_use') {
-      messages.push({ role: 'assistant', content: d.content });
-      messages.push({ role: 'user', content: d.content.filter(b => b.type === 'tool_use').map(b => ({ type: 'tool_result', tool_use_id: b.id, content: '' })) });
-    } else {
-      const t = d.content.filter(b => b.type === 'text');
-      return t[t.length - 1]?.text ?? '';
-    }
+function parseRSS(xml) {
+  const items = [];
+  const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+  let match;
+  while ((match = itemRegex.exec(xml)) !== null && items.length < 4) {
+    const item = match[1];
+    const title = (item.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) || item.match(/<title>([\s\S]*?)<\/title>/))?.[1] || '';
+    const desc = (item.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) || item.match(/<description>([\s\S]*?)<\/description>/))?.[1] || '';
+    const pubDate = item.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1] || '';
+    const clean = (s) => s.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/g, ' ').trim();
+    if (clean(title)) items.push({ title: clean(title), desc: clean(desc).slice(0, 120), pubDate: pubDate.trim() });
   }
-  throw new Error('Max turns');
+  return items;
+}
+
+async function fetchFeeds() {
+  const results = await Promise.allSettled(
+    FEEDS.map(url => fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }).then(r => r.text()))
+  );
+  const all = [];
+  results.forEach((r, i) => {
+    if (r.status === 'fulfilled') {
+      const items = parseRSS(r.value);
+      console.log(`[feed] ${FEEDS[i].split('/')[2]}: ${items.length} items`);
+      all.push(...items);
+    } else {
+      console.log(`[feed] ${FEEDS[i].split('/')[2]}: falhou`);
+    }
+  });
+  return all.slice(0, 20);
+}
+
+async function callHaiku(apiKey, headlines) {
+  const content = headlines.map((h, i) => `${i+1}. ${h.title}${h.desc ? ' — ' + h.desc : ''} (${h.pubDate})`).join('\n');
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 600,
+      messages: [{
+        role: 'user',
+        content: `Você é analista de mercado para vendedores da Mandaê/Nuvem Envio (transportadora brasileira).
+
+Notícias recentes de e-commerce e logística no Brasil:
+${content}
+
+Selecione a MAIS RELEVANTE para um vendedor negociando com lojistas AGORA (frete, entrega, marketplaces, tributação, tendências).
+
+Responda APENAS com este JSON válido, sem texto fora dele:
+{"titulo":"máx 10 palavras","o_que_esta_acontecendo":"2-3 frases factuais","por_que_importa":"1-2 frases sobre impacto no lojista","gancho_para_call":"frase pronta entre aspas para o vendedor usar na call","fonte":"nome do portal","data_busca":"${new Date().toLocaleDateString('pt-BR')}"}`
+      }]
+    })
+  });
+  if (!r.ok) throw new Error(`Haiku ${r.status}: ${await r.text()}`);
+  const d = await r.json();
+  return d.content[0]?.text ?? '';
 }
 
 function parseJson(t) {
@@ -89,9 +117,12 @@ export default async function handler(req, res) {
     console.error('[alerta] KV get erro:', e.message);
   }
 
-  console.log('[alerta] gerando novo alerta...');
+  console.log('[alerta] buscando RSS...');
   try {
-    const text = await callClaude(apiKey);
+    const headlines = await fetchFeeds();
+    if (headlines.length === 0) throw new Error('Nenhum feed disponivel');
+    console.log(`[alerta] ${headlines.length} headlines coletadas, chamando Haiku...`);
+    const text = await callHaiku(apiKey, headlines);
     const parsed = parseJson(text);
     await kvSet(CACHE_KEY, { date: hoje, data: parsed });
     console.log('[alerta] salvo no KV');
