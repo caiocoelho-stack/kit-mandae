@@ -9,14 +9,23 @@ async function kvCmd(cmd) {
     body: JSON.stringify(cmd)
   });
   const d = await r.json();
-  console.log('[kv]', JSON.stringify(cmd[0]), '->', JSON.stringify(d.result)?.slice(0,80));
   return d.result;
 }
 
 async function kvGet(key) {
   if (!KV_URL || !KV_TOKEN) return null;
   const result = await kvCmd(['GET', key]);
-  return result ? JSON.parse(result) : null;
+  if (!result) return null;
+  // Upstash auto-parseia JSON — result pode ser objeto ou string
+  if (typeof result === 'string') {
+    try { return JSON.parse(result); } catch { return null; }
+  }
+  // Formato antigo: { value: "...", ex: N }
+  if (result.value !== undefined && result.date === undefined) {
+    try { return JSON.parse(result.value); } catch { return null; }
+  }
+  // Formato novo: ja e o objeto correto { date: "...", data: {...} }
+  return result;
 }
 
 async function kvSet(key, value, ex = 90000) {
@@ -36,7 +45,7 @@ async function callClaude(apiKey, retryCount = 0) {
       body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1024, system: SYSTEM, tools: [{ type: 'web_search_20250305', name: 'web_search' }], messages })
     });
     if (r.status === 429) {
-      if (retryCount >= 1) throw new Error('Rate limit');
+      if (retryCount >= 1) throw new Error('Rate limit — tente amanha');
       await new Promise(res => setTimeout(res, 15000));
       return callClaude(apiKey, retryCount + 1);
     }
@@ -71,9 +80,9 @@ export default async function handler(req, res) {
 
   try {
     const cached = await kvGet(CACHE_KEY);
-    console.log('[alerta] cache check - date:', cached?.date, '| hoje:', hoje, '| hit:', cached?.date === hoje);
+    console.log('[alerta] cache:', cached?.date, '| hoje:', hoje, '| hit:', cached?.date === hoje);
     if (cached?.date === hoje && cached?.data) {
-      console.log('[alerta] CACHE HIT - sem custo');
+      console.log('[alerta] CACHE HIT');
       return res.json(cached.data);
     }
   } catch (e) {
@@ -84,12 +93,8 @@ export default async function handler(req, res) {
   try {
     const text = await callClaude(apiKey);
     const parsed = parseJson(text);
-    try {
-      await kvSet(CACHE_KEY, { date: hoje, data: parsed });
-      console.log('[alerta] salvo no KV com sucesso');
-    } catch (e) {
-      console.error('[alerta] KV set erro:', e.message);
-    }
+    await kvSet(CACHE_KEY, { date: hoje, data: parsed });
+    console.log('[alerta] salvo no KV');
     res.json(parsed);
   } catch (e) {
     console.error('[alerta] erro:', e.message);
