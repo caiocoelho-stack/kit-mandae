@@ -2,20 +2,26 @@ const KV_URL = process.env.KV_REST_API_URL;
 const KV_TOKEN = process.env.KV_REST_API_TOKEN;
 const CACHE_KEY = "alerta_diario";
 
+async function kvCmd(cmd) {
+  const r = await fetch(KV_URL, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(cmd)
+  });
+  const d = await r.json();
+  console.log('[kv]', JSON.stringify(cmd[0]), '->', JSON.stringify(d.result)?.slice(0,80));
+  return d.result;
+}
+
 async function kvGet(key) {
   if (!KV_URL || !KV_TOKEN) return null;
-  const r = await fetch(`${KV_URL}/get/${key}`, { headers: { Authorization: `Bearer ${KV_TOKEN}` } });
-  const d = await r.json();
-  return d.result ? JSON.parse(d.result) : null;
+  const result = await kvCmd(['GET', key]);
+  return result ? JSON.parse(result) : null;
 }
 
 async function kvSet(key, value, ex = 90000) {
   if (!KV_URL || !KV_TOKEN) return;
-  await fetch(`${KV_URL}/set/${key}`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ value: JSON.stringify(value), ex })
-  });
+  await kvCmd(['SETEX', key, String(ex), JSON.stringify(value)]);
 }
 
 const SYSTEM = `Voce e analista de mercado especializado em e-commerce e logistica no Brasil, escrevendo para vendedores da Mandae/Nuvem Envio. Objetivo: encontrar UMA noticia ou tendencia das ultimas 48h. Responda APENAS neste JSON sem texto fora: {"titulo":"","o_que_esta_acontecendo":"","por_que_importa":"","gancho_para_call":"","fonte":"","data_busca":""}`;
@@ -63,28 +69,26 @@ export default async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'API key missing' });
   const hoje = new Date().toDateString();
 
-  // Verifica cache KV
   try {
     const cached = await kvGet(CACHE_KEY);
-    console.log('[alerta] KV result:', cached ? `hit (${cached.date})` : 'miss');
+    console.log('[alerta] cache check - date:', cached?.date, '| hoje:', hoje, '| hit:', cached?.date === hoje);
     if (cached?.date === hoje && cached?.data) {
-      console.log('[alerta] cache hit — sem custo');
+      console.log('[alerta] CACHE HIT - sem custo');
       return res.json(cached.data);
     }
   } catch (e) {
-    console.error('[alerta] KV erro:', e.message);
+    console.error('[alerta] KV get erro:', e.message);
   }
 
-  // Gera novo alerta
   console.log('[alerta] gerando novo alerta...');
   try {
     const text = await callClaude(apiKey);
     const parsed = parseJson(text);
     try {
       await kvSet(CACHE_KEY, { date: hoje, data: parsed });
-      console.log('[alerta] salvo no KV');
+      console.log('[alerta] salvo no KV com sucesso');
     } catch (e) {
-      console.error('[alerta] KV save erro:', e.message);
+      console.error('[alerta] KV set erro:', e.message);
     }
     res.json(parsed);
   } catch (e) {
