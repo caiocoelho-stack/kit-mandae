@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).end();
   const base = process.env.JIRA_BASE_URL;
   const email = process.env.JIRA_EMAIL;
   const token = process.env.JIRA_API_TOKEN;
