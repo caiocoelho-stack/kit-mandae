@@ -1,9 +1,5 @@
-export const maxDuration = 60;
-
-const SYSTEM = `Você é analista de mercado especializado em e-commerce e logística \
-no Brasil, escrevendo para vendedores da Mandaê/Nuvem Envio.
-Objetivo: encontrar UMA notícia ou tendência das últimas 48h que \
-vendedores possam usar como gancho com clientes de e-commerce.
+﻿const SYSTEM = `Você é analista de mercado especializado em e-commerce e logística no Brasil, escrevendo para vendedores da Mandaê/Nuvem Envio.
+Objetivo: encontrar UMA notícia ou tendência das últimas 48h que vendedores possam usar como gancho com clientes de e-commerce.
 Temas prioritários:
 1. Mudanças em frete, tributação ou regulação logística
 2. Movimentos de marketplaces (Mercado Livre, Shopee, Amazon BR)
@@ -20,14 +16,12 @@ Responda SEMPRE neste JSON sem texto fora dele:
   "data_busca": "string"
 }`;
 
-const USER = `Busque as notícias mais recentes sobre e-commerce e logística no Brasil \
-(últimas 48h). Selecione a mais relevante e útil para vendedores negociando com lojistas agora.`;
+const USER = `Busque as notícias mais recentes sobre e-commerce e logística no Brasil (últimas 48h). Selecione a mais relevante e útil para vendedores negociando com lojistas agora.`;
 
-async function callClaude(apiKey, extraInstruction = '') {
+async function callClaude(apiKey, extraInstruction = '', retryCount = 0) {
   const userContent = extraInstruction ? `${USER}\n\n${extraInstruction}` : USER;
   let messages = [{ role: 'user', content: userContent }];
-
-  for (let turn = 0; turn < 8; turn++) {
+  for (let turn = 0; turn < 3; turn++) {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -44,15 +38,18 @@ async function callClaude(apiKey, extraInstruction = '') {
         messages,
       }),
     });
-
+    if (r.status === 429) {
+      if (retryCount >= 2) throw new Error(`Claude API 429: rate limit após ${retryCount + 1} tentativas`);
+      console.log(`[alerta] Rate limit 429 — aguardando 12s antes de tentar novamente...`);
+      await new Promise(res => setTimeout(res, 12000));
+      return callClaude(apiKey, extraInstruction, retryCount + 1);
+    }
     if (!r.ok) throw new Error(`Claude API ${r.status}: ${await r.text()}`);
     const d = await r.json();
-
     if (d.stop_reason === 'end_turn') {
       const textBlocks = d.content.filter(b => b.type === 'text');
       return textBlocks[textBlocks.length - 1]?.text ?? '';
     }
-
     if (d.stop_reason === 'tool_use') {
       messages.push({ role: 'assistant', content: d.content });
       const results = d.content
@@ -64,7 +61,6 @@ async function callClaude(apiKey, extraInstruction = '') {
       return textBlocks[textBlocks.length - 1]?.text ?? '';
     }
   }
-
   throw new Error('Search loop exceeded max turns');
 }
 
@@ -77,17 +73,15 @@ function parseJson(text) {
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
-
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'API key not configured' });
-
   try {
     const text = await callClaude(apiKey);
     let parsed;
     try {
       parsed = parseJson(text);
     } catch (e) {
-      console.error('Alerta error (first parse):', e.message, '\nText:', text.slice(0, 300));
+      console.error('Alerta error (first parse):', e.message);
       const text2 = await callClaude(apiKey, 'Responda APENAS com o JSON, sem texto antes ou depois, sem markdown.');
       parsed = parseJson(text2);
     }
