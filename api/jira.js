@@ -13,15 +13,10 @@ export default async function handler(req, res) {
         jql: `project = "INT" AND status = "Aguardando Comercial" AND created <= "-20d" ORDER BY created ASC`,
         fields: [
           "summary", "assignee", "reporter", "updated", "created", "comment", "status",
-          "customfield_13646",
-          "customfield_13670",
-          "customfield_13672",
-          "customfield_13693",
-          "customfield_13698",
-          "customfield_10222",
-          "customfield_10223"
+          "customfield_13646", "customfield_13670", "customfield_13672",
+          "customfield_13693", "customfield_13698", "customfield_10222", "customfield_10223"
         ],
-        expand: ["changelog"],
+        expand: "changelog",
         maxResults: 50
       })
     });
