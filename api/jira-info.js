@@ -3,29 +3,29 @@ export default async function handler(req, res) {
   const email = process.env.JIRA_EMAIL;
   const token = process.env.JIRA_API_TOKEN;
   const auth = Buffer.from(`${email}:${token}`).toString('base64');
+  const headers = { 'Authorization': `Basic ${auth}`, 'Content-Type': 'application/json', 'Accept': 'application/json' };
 
-  // Pega 1 ticket com tudo expandido
-  const r = await fetch(`${base}/rest/api/3/search/jql`, {
-    method: 'POST',
-    headers: { 'Authorization': `Basic ${auth}`, 'Content-Type': 'application/json', 'Accept': 'application/json' },
+  // 1. Lista todos os campos configurados no Jira
+  const fieldsResp = await fetch(`${base}/rest/api/3/field`, { headers });
+  const allFields = await fieldsResp.json();
+  const customFields = allFields.filter(f => f.custom).map(f => ({ id: f.id, name: f.name }));
+
+  // 2. Pega 1 ticket com changelog
+  const searchResp = await fetch(`${base}/rest/api/3/search/jql`, {
+    method: 'POST', headers,
     body: JSON.stringify({
-      jql: `project = "INT" AND status = "Aguardando Comercial" ORDER BY created ASC`,
-      fields: ["*all"],
+      jql: `project = "INT" AND status = "Aguardando Comercial" AND created <= "-20d" ORDER BY created ASC`,
+      fields: ["summary", "status", "assignee", "reporter", "created", "comment"],
       expand: ["changelog"],
       maxResults: 1
     })
   });
-
-  const data = await r.json();
-  const issue = data.issues?.[0];
-  if (!issue) return res.json({ error: 'nenhum ticket' });
-
-  // Retorna campos disponiveis + changelog resumido
-  const fields = Object.keys(issue.fields).filter(k => issue.fields[k] !== null);
-  const changelog = issue.changelog?.histories?.slice(0, 5).map(h => ({
+  const searchData = await searchResp.json();
+  const issue = searchData.issues?.[0];
+  const changelog = issue?.changelog?.histories?.slice(0, 10).map(h => ({
     created: h.created,
-    items: h.items.map(i => ({ field: i.field, from: i.fromString, to: i.toString }))
-  }));
+    items: h.items.filter(i => i.field === 'status').map(i => ({ from: i.fromString, to: i.toString }))
+  })).filter(h => h.items.length > 0);
 
-  res.json({ fields, changelog, sample: issue.fields });
+  res.json({ customFields, changelog, issueKey: issue?.key });
 }
