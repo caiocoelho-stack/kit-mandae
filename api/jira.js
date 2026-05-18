@@ -1,29 +1,34 @@
 export default async function handler(req, res) {
-  const { JIRA_BASE_URL: base, JIRA_EMAIL: email, JIRA_API_TOKEN: token } = process.env;
-  if (!base || !email || !token) return res.status(503).json({ issues: [], error: 'Jira nao configurado' });
+  if (req.method !== 'POST') return res.status(405).end();
+  const base = process.env.JIRA_BASE_URL;
+  const email = process.env.JIRA_EMAIL;
+  const token = process.env.JIRA_API_TOKEN;
+  if (!base || !email || !token) return res.status(500).json({ error: 'Jira env vars missing' });
+  const auth = Buffer.from(`${email}:${token}`).toString('base64');
   try {
-    const creds = Buffer.from(`${email}:${token}`).toString('base64');
     const r = await fetch(`${base}/rest/api/3/search/jql`, {
       method: 'POST',
-      headers: {
-        'Authorization': `Basic ${creds}`,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Authorization': `Basic ${auth}`, 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        jql: 'project = "INT" AND status = "Aguardando Comercial" AND created <= "-20d" ORDER BY created ASC',
-        maxResults: 50,
-        fields: ['summary', 'assignee', 'reporter', 'updated', 'created', 'comment']
+        jql: `project = "INT" AND status = "Aguardando Comercial" AND created <= "-20d" ORDER BY created ASC`,
+        fields: [
+          "summary", "assignee", "reporter", "updated", "created", "comment", "status",
+          "customfield_13646",
+          "customfield_13670",
+          "customfield_13672",
+          "customfield_13693",
+          "customfield_13698",
+          "customfield_10222",
+          "customfield_10223"
+        ],
+        expand: ["changelog"],
+        maxResults: 50
       })
     });
+    if (!r.ok) { const t = await r.text(); return res.status(r.status).json({ error: t }); }
     const data = await r.json();
-    console.log('[jira] status:', r.status);
-    console.log('[jira] body:', JSON.stringify(data).substring(0, 800));
-    const issues = data.issues || data.values || [];
-    res.setHeader('Cache-Control', 'max-age=300');
-    res.status(200).json({ ...data, issues });
-  } catch(e) {
-    console.error('[jira]', e.message);
-    res.status(500).json({ issues: [], error: e.message });
+    res.json({ issues: data.issues || [] });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 }
