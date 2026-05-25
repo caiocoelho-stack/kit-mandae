@@ -109,6 +109,7 @@ export default async function handler(req, res) {
           uf: v[21]||'',
           inscricao: lm.i || '',
           convidados: lm.c || '',
+          vendedores: v[29]||'',
           fonte: 'agenda'
         };
       })
@@ -127,3 +128,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: e.message });
   }
 }
+
