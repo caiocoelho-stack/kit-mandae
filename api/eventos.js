@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+﻿export default async function handler(req, res) {
   try {
     const ESTADOS_INCLUIR = ['SP', 'MG', 'SC'];
 
@@ -22,11 +22,66 @@ export default async function handler(req, res) {
     };
 
     const MESES = {
-      'JANEIRO':'01','FEVEREIRO':'02','MARCO':'03','MARÇO':'03',
+      'JANEIRO':'01','FEVEREIRO':'02','MARCO':'03','MARCO':'03',
       'ABRIL':'04','MAIO':'05','JUNHO':'06','JULHO':'07',
       'AGOSTO':'08','SETEMBRO':'09','OUTUBRO':'10',
       'NOVEMBRO':'11','DEZEMBRO':'12'
     };
+
+    function parseDataTexto(str) {
+      if (!str) return '';
+      if (/^\d{1,2}\/\d{2}\/\d{4}$/.test(str.trim())) return str.trim();
+      const m = str.match(/(\d{1,2})\s+de\s+([A-Za-z]+)/i);
+      if (m) {
+        const dia = m[1].padStart(2, '0');
+        const mesKey = m[2].toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        const mes = MESES[mesKey];
+        if (mes) return dia + '/' + mes + '/' + new Date().getFullYear();
+      }
+      return '';
+    }
+
+    function parseCSV(csv) {
+      const lines = csv.split('\n');
+      function parseLine(line) {
+        const cells = []; let cur = '', inQ = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') {
+            if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+            else inQ = !inQ;
+          } else if (ch === ',' && !inQ) { cells.push(cur.trim()); cur = ''; }
+          else cur += ch;
+        }
+        cells.push(cur.trim());
+        return cells;
+      }
+      return lines.filter(l => l.trim()).map(parseLine);
+    }
+
+    const SHEET1 = '1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw';
+    const SHEET2 = '1tYtqaOxz_kHmbA54ZmbcyslNsg2eDXEAkQCF9YPu7Cc';
+    const url1 = 'https://docs.google.com/spreadsheets/d/' + SHEET1 + '/gviz/tq?tqx=out:csv&sheet=Kit';
+    const url2 = 'https://docs.google.com/spreadsheets/d/' + SHEET2 + '/gviz/tq?tqx=out:csv&sheet=Agenda%20Conecta%20D2C';
+
+    const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
+    const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
+
+    const rows1 = parseCSV(csv1);
+    const seen = new Set();
+    const eventos1 = [];
+    for (const v of rows1) {
+      const nome = (v[0] || '').trim();
+      const dataRaw = (v[1] || '').trim();
+      const responsavel = (v[2] || '').trim();
+      const tipo = (v[3] || 'evento').trim().toLowerCase();
+      if (!nome || nome === 'Nome' || nome === 'Eventos Feiras') continue;
+      const data = parseDataTexto(dataRaw);
+      const chave = nome.toLowerCase() + '|' + data;
+      if (seen.has(chave)) continue;
+      seen.add(chave);
+      eventos1.push({ nome, data, dataTexto: data ? '' : dataRaw, responsavel, tipo, cidade: '', uf: '', fonte: 'kit' });
+    }
 
     function buildData(v) {
       if (v[9]) return v[9];
@@ -35,97 +90,54 @@ export default async function handler(req, res) {
       if (!dia || !mesNome) return '';
       const mes = MESES[mesNome];
       if (!mes) return '';
-      const ano = new Date().getFullYear();
-      return `${dia.padStart(2,'0')}/${mes}/${ano}`;
+      return dia.padStart(2,'0') + '/' + mes + '/' + new Date().getFullYear();
     }
 
-    function parseCSV(csv) {
-      const rows = [];
-      const lines = csv.split('\n');
-      function parseLine(line) {
-        const cells = []; let cur = '', inQ = false;
-        for (let i = 0; i < line.length; i++) {
-          const c = line[i];
-          if (c === '"') {
-            if (inQ && line[i+1] === '"') { cur += '"'; i++; }
-            else inQ = !inQ;
-          } else if (c === ',' && !inQ) { cells.push(cur.trim()); cur = ''; }
-          else cur += c;
-        }
-        cells.push(cur.trim());
-        return cells;
-      }
-      const headers = parseLine(lines[0]);
-      for (let i = 1; i < lines.length; i++) {
-        if (!lines[i].trim()) continue;
-        const vals = parseLine(lines[i]);
-        const obj = {};
-        headers.forEach((h, idx) => { obj[h] = vals[idx] || ''; });
-        obj.__vals = vals;
-        rows.push(obj);
-      }
-      return rows;
-    }
-
-    const SHEET1 = '1DHeizS8DkCmfTMpRBZeD1dIsYgLR_lxRoOco6ryAsmw';
-    const SHEET2 = '1tYtqaOxz_kHmbA54ZmbcyslNsg2eDXEAkQCF9YPu7Cc';
-    const url1 = `https://docs.google.com/spreadsheets/d/${SHEET1}/gviz/tq?tqx=out:csv&sheet=Kit`;
-    const url2 = `https://docs.google.com/spreadsheets/d/${SHEET2}/gviz/tq?tqx=out:csv&sheet=Agenda%20Conecta%20D2C`;
-
-    const [r1, r2] = await Promise.all([fetch(url1), fetch(url2)]);
-    const [csv1, csv2] = await Promise.all([r1.text(), r2.text()]);
-
-    const eventos1 = parseCSV(csv1)
-      .filter(r => {
-        const v = r.__vals || Object.values(r);
-        const nome = v[0] || '';
-        return nome && nome !== 'Nome' && !nome.toLowerCase().includes('conecta d2c');
-      })
-      .map(r => {
-        const v = r.__vals || Object.values(r);
-        return { nome: v[0]||'', data: v[1]||'', dataTexto:'', responsavel: v[2]||'', tipo: (v[3]||'evento').toLowerCase(), cidade:'', uf:'', fonte:'clara' };
-      })
-      .filter(e => e.nome);
-
-    const eventos2 = parseCSV(csv2)
-      .map((r, idx) => ({ r, idx }))
-      .filter(({ r }) => {
-        const v = r.__vals || [];
-        return v[8] &&
-          (v[0]||'').toLowerCase() === 'em andamento' &&
-          (v[3]||'').toLowerCase() === 'sim' &&
-          ESTADOS_INCLUIR.includes((v[21]||'').trim().toUpperCase());
-      })
-      .map(({ r, idx }) => {
-        const v = r.__vals;
+    const rows2 = parseCSV(csv2);
+    const eventos2 = rows2.slice(1)
+      .map((v, idx) => ({ v, idx }))
+      .filter(({ v }) =>
+        v[8] &&
+        (v[0] || '').toLowerCase() === 'em andamento' &&
+        (v[3] || '').toLowerCase() === 'sim' &&
+        ESTADOS_INCLUIR.includes((v[21] || '').trim().toUpperCase())
+      )
+      .map(({ v, idx }) => {
         const lm = LINK_MAP[idx] || {};
         return {
-          nome: v[8]||'',
+          nome: v[8] || '',
           data: buildData(v),
           dataTexto: '',
-          responsavel: v[35]||v[7]||'',
-          tipo: (v[16]||'evento').toLowerCase(),
-          cidade: v[20]||'',
-          uf: v[21]||'',
+          responsavel: v[35] || v[7] || '',
+          tipo: (v[16] || 'evento').toLowerCase(),
+          cidade: v[20] || '',
+          uf: v[21] || '',
           inscricao: lm.i || '',
           convidados: lm.c || '',
-          vendedores: v[29]||'',
+          vendedores: v[29] || '',
           fonte: 'agenda'
         };
       })
       .filter(e => e.nome);
 
-    const todos = [...eventos1, ...eventos2].sort((a, b) => {
-      const p = s => { if (!s) return Infinity; const [d,m,y] = s.split('/'); return new Date(+y,+m-1,+d).getTime(); };
-      return p(a.data) - p(b.data);
-    });
+    const parseData = (s) => {
+      if (!s || !s.includes('/')) return Infinity;
+      const [d, mo, y] = s.split('/');
+      return new Date(+y, +mo - 1, +d).getTime();
+    };
+
+    const todos = [...eventos1, ...eventos2].sort((a, b) => parseData(a.data) - parseData(b.data));
 
     res.setHeader('Cache-Control', 'no-store');
-    res.status(200).json({ events: todos, updatedAt: new Date().toISOString(), total: todos.length, fontes: { clara: eventos1.length, agenda: eventos2.length } });
+    res.status(200).json({
+      events: todos,
+      updatedAt: new Date().toISOString(),
+      total: todos.length,
+      fontes: { kit: eventos1.length, agenda: eventos2.length }
+    });
 
-  } catch(e) {
+  } catch (e) {
     console.error('Eventos error:', e);
     res.status(500).json({ error: e.message });
   }
 }
-
