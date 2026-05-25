@@ -109,7 +109,7 @@
           nome: v[9] || '',
           data: buildData(v),
           dataTexto: '',
-          responsavel: v[25] || '',
+          responsavel: '',
           tipo: (v[17] || 'evento').toLowerCase(),
           cidade: v[21] || '',
           uf: v[22] || '',
@@ -142,3 +142,4 @@
     res.status(500).json({ error: e.message });
   }
 }
+
