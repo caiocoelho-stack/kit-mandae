@@ -3,22 +3,20 @@
     const ESTADOS_INCLUIR = ['SP', 'MG', 'SC'];
 
     const LINK_MAP = {
-      0:  { i: 'https://luma.com/xy1ar15j', c: 'https://docs.google.com/spreadsheets/d/1OIJsZNY2y80HG9PUo7XtIc8Sa8yWyexn/edit?usp=sharing' },
-      1:  { i: 'https://www.sympla.com.br/evento/conecta-by-pandorium---edicao-belo-horizonte/3422861?d=NUVEM100', c: 'https://docs.google.com/spreadsheets/d/1eAtSuGokLlXUPzpuqXaJfaCSWZ-75CXgNEwZ3Mzq-lQ/edit?usp=sharing' },
-      2:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1UdTMjjeStWp2xKppnyWl99RMgY-Rb0aK9_UaQZUEe28/edit?usp=drive_link' },
-      3:  { i: 'https://www.sympla.com.br/evento/conecta-d2c-ribeirao-preto-2026/3320471', c: 'https://docs.google.com/spreadsheets/d/1E9e4aRMjEV7rY-FlM_OOGw0__gKv5m3e3eYY4SqURio/edit?usp=drive_link' },
-      4:  { i: '', c: 'https://docs.google.com/spreadsheets/d/11EQd6j9X35A4BvU6iP1SwPy8Hve7Ij_6CRprs6zqQaQ/edit?usp=drive_link' },
-      5:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1xEHTPuqlMXjz3THK7WZLkWEO_8mtAnziBZ27P9e88XA/edit?usp=drive_link' },
-      6:  { i: '', c: 'https://docs.google.com/spreadsheets/d/16bfMKrpVAHZtQJRSdiRb_YoWoGMaIvkc0Q5nWMfaPUw/edit?usp=drive_link' },
-      7:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1Bwqe8fCdok8LhYdJc5aPqEbbjBA3TJrvPNUmLZdEzwA/edit?usp=drive_link' },
-      9:  { i: '', c: 'https://docs.google.com/spreadsheets/d/1Aiiba9Klu6C7_I5xKAwJ2NnwxSLcnzUh9PHarWXAVfg/edit?usp=drive_link' },
-      29: { i: '', c: 'https://docs.google.com/spreadsheets/d/1fbR4OvxGgYuUeDDjBgLfTH7ZfUrMC0mhj0S3Lj5LMGM/edit?usp=sharing' },
-      40: { i: 'https://www.sympla.com.br/evento/conecta-d2c-ribeirao-preto-2026/3320471', c: 'https://docs.google.com/spreadsheets/d/1q96itqAjWzIJYILA4xuY3NjBsxWO0HkdH0Qz5u7JNXw/edit?usp=drive_link' },
-      41: { i: 'https://luma.com/dyeculh3', c: 'https://docs.google.com/spreadsheets/d/1fbR4OvxGgYuUeDDjBgLfTH7ZfUrMC0mhj0S3Lj5LMGM/edit?usp=drive_link' },
-      42: { i: 'https://www.sympla.com.br/evento/d2c-conecta-divinopolis-nuvemshop-weethub/3349202', c: 'https://docs.google.com/spreadsheets/d/125uozYFKV3W4lmO7JFrCjOmS6tvz-u0oF_Zi-6ewvfc/edit?usp=drive_link' },
-      43: { i: 'https://luma.com/nj2dhypp', c: 'https://docs.google.com/spreadsheets/d/162Oo96UgzYMLJbVaLTYrg_JLkVh2XtLwuZVcubAaETs/edit?usp=drive_link' },
-      44: { i: 'https://luma.com/hkuzjqnc', c: 'https://docs.google.com/spreadsheets/d/1n1WUznC0lChbIhXtOejxA5rkBCP7HT-H_U9s4-oGyYs/edit?usp=drive_link' },
-      45: { i: 'https://luma.com/nrz4mn5e', c: 'https://docs.google.com/spreadsheets/d/1XSFXAG6GQ-mb6yhu2gouFwQVO3WzORJtxRsjahOO1eo/edit?usp=drive_link' },
+      1:  { i: "https://www.sympla.com.br/evento/conecta-by-pandorium---edicao-belo-horizonte/3422861?d=NUVEM100", c: "https://docs.google.com/spreadsheets/d/1eAtSuGokLlXUPzpuqXaJfaCSWZ-75CXgNEwZ3Mzq-lQ/edit?usp=sharing" },
+      2:  { i: "https://www.sympla.com.br/evento/conecta-d2c-bauru-nuvemshop-blu-assessoria/3384071", c: "https://docs.google.com/spreadsheets/d/1UdTMjjeStWp2xKppnyWl99RMgY-Rb0aK9_UaQZUEe28/edit?usp=drive_link" },
+      3:  { i: "https://www.sympla.com.br/evento/conecta-d2c-franca-2026/3412879", c: "https://docs.google.com/spreadsheets/d/1E9e4aRMjEV7rY-FlM_OOGw0__gKv5m3e3eYY4SqURio/edit?usp=drive_link" },
+      4:  { i: "https://luma.com/zv7mfmnm", c: "https://docs.google.com/spreadsheets/d/11EQd6j9X35A4BvU6iP1SwPy8Hve7Ij_6CRprs6zqQaQ/edit?usp=drive_link" },
+      5:  { i: "https://luma.com/1atrtp3o", c: "https://docs.google.com/spreadsheets/d/1xEHTPuqlMXjz3THK7WZLkWEO_8mtAnziBZ27P9e88XA/edit?usp=drive_link" },
+      6:  { i: "", c: "https://docs.google.com/spreadsheets/d/1Aiiba9Klu6C7_I5xKAwJ2NnwxSLcnzUh9PHarWXAVfg/edit?usp=drive_link" },
+      7:  { i: "https://luma.com/y0xzgpia", c: "" },
+      11: { i: "", c: "https://docs.google.com/spreadsheets/d/1Bwqe8fCdok8LhYdJc5aPqEbbjBA3TJrvPNUmLZdEzwA/edit?usp=drive_link" },
+      29: { i: "", c: "https://docs.google.com/spreadsheets/d/16bfMKrpVAHZtQJRSdiRb_YoWoGMaIvkc0Q5nWMfaPUw/edit?usp=drive_link" },
+      41: { i: "https://luma.com/dyeculh3", c: "https://docs.google.com/spreadsheets/d/1fbR4OvxGgYuUeDDjBgLfTH7ZfUrMC0mhj0S3Lj5LMGM/edit?usp=drive_link" },
+      42: { i: "https://www.sympla.com.br/evento/d2c-conecta-divinopolis-nuvemshop-weethub/3349202", c: "https://docs.google.com/spreadsheets/d/125uozYFKV3W4lmO7JFrCjOmS6tvz-u0oF_Zi-6ewvfc/edit?usp=drive_link" },
+      43: { i: "https://luma.com/nj2dhypp", c: "https://docs.google.com/spreadsheets/d/162Oo96UgzYMLJbVaLTYrg_JLkVh2XtLwuZVcubAaETs/edit?usp=drive_link" },
+      44: { i: "https://luma.com/hkuzjqnc", c: "https://docs.google.com/spreadsheets/d/1n1WUznC0lChbIhXtOejxA5rkBCP7HT-H_U9s4-oGyYs/edit?usp=drive_link" },
+      46: { i: "https://luma.com/nrz4mn5e", c: "https://docs.google.com/spreadsheets/d/1XSFXAG6GQ-mb6yhu2gouFwQVO3WzORJtxRsjahOO1eo/edit?usp=drive_link" },
     };
 
     const MESES = {
@@ -142,4 +140,5 @@
     res.status(500).json({ error: e.message });
   }
 }
+
 
