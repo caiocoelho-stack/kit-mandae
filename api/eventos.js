@@ -83,9 +83,9 @@
 
     function buildData(v) {
       // col 10 = data formatada se existir, col 11 = Dia, col 12 = Mes
-      if (v[10]) return v[10];
-      const dia = (v[11] || '').trim();
-      const mesNome = (v[12] || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      if (v[11]) return v[11];
+      const dia = (v[12] || '').trim();
+      const mesNome = (v[13] || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       if (!dia || !mesNome) return '';
       const mes = MESES[mesNome];
       if (!mes) return '';
@@ -96,24 +96,24 @@
     const eventos2 = rows2.slice(1)
       .map((v, idx) => ({ v, idx }))
       .filter(({ v }) =>
-        v[9] &&
+        v[10] &&
         (v[0] || '').toLowerCase() === 'em andamento' &&
         (v[3] || '').toLowerCase() === 'sim' &&
-        ESTADOS_INCLUIR.includes((v[22] || '').trim().toUpperCase())
+        ESTADOS_INCLUIR.includes((v[25] || '').trim().toUpperCase())
       )
       .map(({ v, idx }) => {
         const lm = LINK_MAP[idx] || {};
         return {
-          nome: v[9] || '',
+          nome: v[10] || '',
           data: buildData(v),
           dataTexto: '',
           responsavel: '',
-          tipo: (v[17] || 'evento').toLowerCase(),
-          cidade: v[21] || '',
-          uf: v[22] || '',
+          tipo: (v[20] || 'evento').toLowerCase(),
+          cidade: v[24] || '',
+          uf: v[25] || '',
           inscricao: lm.i || '',
           convidados: lm.c || '',
-          vendedores: v[29] || '',
+          vendedores: v[32] || '',
           fonte: 'agenda'
         };
       })
@@ -140,5 +140,6 @@
     res.status(500).json({ error: e.message });
   }
 }
+
 
 
