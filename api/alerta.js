@@ -1,4 +1,4 @@
-const KV_URL = process.env.KV_REST_API_URL;
+﻿const KV_URL = process.env.KV_REST_API_URL;
 const KV_TOKEN = process.env.KV_REST_API_TOKEN;
 const CACHE_KEY = "alerta_diario";
 
@@ -30,7 +30,7 @@ async function kvGet(key) {
   return result;
 }
 
-async function kvSet(key, value, ex = 90000) {
+async function kvSet(key, value, ex = 86400) {
   if (!KV_URL || !KV_TOKEN) return;
   await kvCmd(['SETEX', key, String(ex), JSON.stringify(value)]);
 }
@@ -68,7 +68,7 @@ async function fetchFeeds() {
 }
 
 async function callHaiku(apiKey, headlines) {
-  const content = headlines.map((h, i) => `${i+1}. ${h.title}${h.desc ? ' — ' + h.desc : ''} (${h.pubDate})`).join('\n');
+  const content = headlines.map((h, i) => `${i+1}. ${h.title}${h.desc ? ' â€” ' + h.desc : ''} (${h.pubDate})`).join('\n');
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
@@ -77,15 +77,15 @@ async function callHaiku(apiKey, headlines) {
       max_tokens: 600,
       messages: [{
         role: 'user',
-        content: `Você é analista de mercado para vendedores da Mandaê/Nuvem Envio (transportadora brasileira).
+        content: `VocÃª Ã© analista de mercado para vendedores da MandaÃª/Nuvem Envio (transportadora brasileira).
 
-Notícias recentes de e-commerce e logística no Brasil:
+NotÃ­cias recentes de e-commerce e logÃ­stica no Brasil:
 ${content}
 
-Selecione a MAIS RELEVANTE para um vendedor negociando com lojistas AGORA (frete, entrega, marketplaces, tributação, tendências).
+Selecione a MAIS RELEVANTE para um vendedor negociando com lojistas AGORA (frete, entrega, marketplaces, tributaÃ§Ã£o, tendÃªncias).
 
-Responda APENAS com este JSON válido, sem texto fora dele:
-{"titulo":"máx 10 palavras","o_que_esta_acontecendo":"2-3 frases factuais","por_que_importa":"1-2 frases sobre impacto no lojista","gancho_para_call":"frase pronta entre aspas para o vendedor usar na call","fonte":"nome do portal","data_busca":"${new Date().toLocaleDateString('pt-BR')}"}`
+Responda APENAS com este JSON vÃ¡lido, sem texto fora dele:
+{"titulo":"mÃ¡x 10 palavras","o_que_esta_acontecendo":"2-3 frases factuais","por_que_importa":"1-2 frases sobre impacto no lojista","gancho_para_call":"frase pronta entre aspas para o vendedor usar na call","fonte":"nome do portal","data_busca":"${new Date().toLocaleDateString('pt-BR')}"}`
       }]
     })
   });
@@ -109,10 +109,7 @@ export default async function handler(req, res) {
   try {
     const cached = await kvGet(CACHE_KEY);
     console.log('[alerta] cache:', cached?.date, '| hoje:', hoje, '| hit:', cached?.date === hoje);
-    if (cached?.date === hoje && cached?.data) {
-      console.log('[alerta] CACHE HIT');
-      return res.json(cached.data);
-    }
+    if (cached?.data) { console.log('[alerta] CACHE HIT'); return res.json(cached.data); }
   } catch (e) {
     console.error('[alerta] KV get erro:', e.message);
   }
@@ -124,7 +121,7 @@ export default async function handler(req, res) {
     console.log(`[alerta] ${headlines.length} headlines coletadas, chamando Haiku...`);
     const text = await callHaiku(apiKey, headlines);
     const parsed = parseJson(text);
-    await kvSet(CACHE_KEY, { date: hoje, data: parsed });
+    await kvSet(CACHE_KEY, { data: parsed }, 86400);
     console.log('[alerta] salvo no KV');
     res.json(parsed);
   } catch (e) {
@@ -132,3 +129,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: e.message });
   }
 }
+
