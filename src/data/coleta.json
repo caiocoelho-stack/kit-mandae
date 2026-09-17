@@ -1,0 +1,6134 @@
+[
+  {
+    "cidade": "30 Cunha",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "30 Piacatu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "30 Santos Dumont",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "30 São Vicente de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Abadia Dos Dourados",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Abaeté",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Abre Campo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Adamantina",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Agua Boa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Aguai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Aguas da Prata",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Águas de Lindóia",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Aguas de Sao Pedro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Aguas Formosas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Aguas Vermelhas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Agudos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Aiuruoca",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Alem Paraiba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Alfenas",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Alfredo Marcondes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Almenara",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Alpinopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Alterosa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Altinopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Alto Alegre",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Alto Jequitiba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Alto Rio Doce",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Alvares Machado",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Alvinopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Americana",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Amparo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Analandia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Andradas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Andradina",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Andrelandia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Angatuba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Anhembi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Antonio Carlos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Antonio Dias",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Aparecida",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Apiai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Aracatuba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Aracoiaba da Serra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Aracuai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Araguari",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Arapora",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Araquari",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Araraquara",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Araras",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Araújos",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Araxa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Arceburgo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Arcos",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Areado",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Arujá",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Assis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Astolfo Dutra",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ataleia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Atibaia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Augusto De Lima",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Auriflama",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Avare",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bady Bassitt",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Baependi",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Balneario Camboriu",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Balneario Piçarras",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Balsamo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bambui",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bananal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barão de Cocais",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barbacena",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bariri",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barra Bonita",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barra Velha",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Barretos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barrinhas",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barroso",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Barueri",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bastos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Batatais",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bauru",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bebedouro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bela Vista de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Belo Oriente",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Belo Vale",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Berilo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Betim",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bicas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Birigui",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Blumenau",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Boa Esperanca",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bocaiuva",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bofete",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Boituva",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diário"
+  },
+  {
+    "cidade": "Bom Despacho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Bom Jardim de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Bom Jesus da Penha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Bom Jesus do Galho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Bom Jesus dos Perdões",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bom Repouso",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Bom Sucesso",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Bombinhas",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Bonfim",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Bonfinopolis de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Borborema",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Borda da Mata",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Borebi",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Botelhos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Botucatu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bragança Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Brasilandia de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Brasilia de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Brauna",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Brazopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Brodowski",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Brotas",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Brumadinho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Brusque",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Bueno Brandao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Buenopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Buritizal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Buritizeiro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Cabo Verde",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Caçapava",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cachoeira da Prata",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Cachoeira de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Cachoeira de Pajeu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Cachoeira Do Campo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cachoeira Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Caetanopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Caete",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cajamar",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Cajobi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cajuru",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Caldas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Camanducaia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Camboriu",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Cambuí",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Cambuquira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Campanario",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Campanha",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Campestre",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Campina Verde",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Campinas",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Campo Belo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Campo do Meio",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Campo Florido",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Campos Altos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Campos de Holambra II",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Campos do Jordão",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Campos Gerais",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Campos Novos Paulistas",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Canapolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Candeias",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Candido Mota",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Canelinha",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternado"
+  },
+  {
+    "cidade": "Capao Bonito",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Capela do Alto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Capelinha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Capinopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Capitao Eneas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Capitolio",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Capivari",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Caraguatatuba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Carandai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carangola",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carapicuiba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Caratinga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carbonita",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Carlos Chagas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carmo da Cachoeira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Carmo da Mata",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carmo do Cajuru",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carmo do Paranaiba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carmo do Rio Claro",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carmopolis de Minas",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Carneirinho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Carrancas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Casa Branca",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cassia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Castilho",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cataguases",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Catanduva",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Catas Altas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Caxambu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cedral",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Central de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Centralina",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Chapada do Norte",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Charqueada",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Chavantes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Claudio",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Clementina",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cochal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Coimbra",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Colina",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Coluna",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Comercinho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Conceicao da Aparecida",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Conceicao das Alagoas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Conceicao do Mato Dentro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Conceicao do Para",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Conceição do Rio Verde",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Conceicao dos Ouros",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Conchas",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Congonhal",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Congonhas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Conquista",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Conselheiro Lafaiete",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Conselheiro Pena",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Contagem",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Coqueiral",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Coracao de Jesus",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cordeiropolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cordisburgo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Corinto",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Coroaci",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Coroados",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Coromandel",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Coronel Fabriciano",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Coronel Pacheco",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Corumbatai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cosmopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cotia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Cravinhos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Criciuma",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Cristais",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Cristais Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cristina",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Cruzalia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Cruzeiro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Cruzeiro da Fortaleza",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Cruzilia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Cubatão",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Curvelo",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Datas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Delfim Moreira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Descalvado",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Descoberto",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Desterro de Entre Rios",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Diadema",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Diamantina",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Divino",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Divinolandia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Divinópolis",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Divisa Nova",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Divisopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Dobrada",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Dois Corregos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Dom Cavati",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Dom Silverio",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Dona Euzebia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Dores do Indaia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Dourado",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Dracena",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Echapora",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Eloi Mendes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Embu das Artes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Entre Folhas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Entre Rios de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ervália",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Esmeraldas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Espera Feliz",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Espinosa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Espirito Santo do Pinhal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Estiva",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Estrela do Sul",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Eugenopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Extrema",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Fartura",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Felisburgo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Fernandopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ferraz de Vasconcelos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Ferros",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Florestal",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Florianopolis",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Formiga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Fortaleza de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Franca",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Francisco Badaro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Francisco Sa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Frutal",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Gabriel Monteiro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Galileia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Garca",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Garopaba",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Gaspar",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Glicero",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Gonçalves",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Gouveia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Governador Valadares",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Grao Mogol",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guabiruba",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Guaira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guanhaes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guape",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guapiacu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guara",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guaracai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guaraciaba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Guaramirim",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Guaranesia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guarani",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guararapes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guararema",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guaratinguetá",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Guarda-Mor",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Guarei",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guariba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guarulhos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Guaxupe",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Guidoval",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Guimarania",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Guiricema",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Gurinhata",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Heliodora",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Holambra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Hortolândia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Iapu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibate",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Ibiai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibiraci",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibirarema",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibirité",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ibitinga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Ibitiúra de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ibiuna",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Icarai De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Icém",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Iepe",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Igarapava",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Igarape",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Igaratinga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Iguatama",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ilha Solteira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ilhabela",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ilhota",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Ilicinea",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Imbituba",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Inconfidentes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Indaial",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Indaiatuba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Indianopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Inhapim",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Inhauma",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Ipaba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ipanema",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ipatinga",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Ipaussu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ipuiuna",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Iracemapolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Irai de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itabera",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itabira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itabirinha de Mantena",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Itabirito",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itacarambi",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itaguara",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itaipe",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Itajai",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itajobi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itajuba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itamarandiba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itamarati De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itambacuri",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itamogi",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itamonte",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itanhandu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itanhomi",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itaobim",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itapagipe",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itapecerica da Serra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itapecirica",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itapema",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itapetininga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itapeva",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itapeva",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itapevi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itapira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itapolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itaporanga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itapuí",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itarare",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itatiaiucu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Itatiba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itatinga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itau de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itaúna",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itinga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Itirapua",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Itu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Itupeva",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Iturama",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ituverava",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jaborandi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jaboticabal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jaboticatubas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Jacareí",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Jacinto",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Jacui",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Jacutinga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Jaguariuna",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jaiba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jales",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Janaúba",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jandira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Januaria",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Japonvar",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jaragua Do Sul",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Jardinopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jarinu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Jau",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Jenipapo de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Jequeri",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Jequitai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Jequitinhonha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Joaima",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Joao Monlevade",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "João Pinheiro",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Joao Ramalho",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Joinville",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Jose Bonifacio",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Juatuba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Juiz de Fora",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Jundiaí",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Junqueirópolis",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Juruaia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ladainha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Lagamar",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Lagoa da Prata",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Lagoa Dos Patos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Lagoa Dourada",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Lagoa Formosa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Lambari",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Laranjal",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Laranjal Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Laurentino",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternado"
+  },
+  {
+    "cidade": "Lavras",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Leandro Ferreira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Leme",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Lencois Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Leopoldina",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Liberdade",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Lima Duarte",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Limeira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Limeira do Oeste",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Lindoia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Lins",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Lontra",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Lorena",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Louveira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Lucelia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Luiz Alves",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Luiz Antonio",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Luz",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Macatuba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Machacalis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Machado",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mairinque",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Mairiporã",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Malacacheta",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Manduri",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Manga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Manhuaçu",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Manhumirim",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mantena",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mar de Espanha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Maracai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Maravilhas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Maria da Fe",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Mariana",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Marilia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Mario Campos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Maripa De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Martinho Campos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Martinopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Massaranduba",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Mata Verde",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Matao",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Mateus Leme",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mathias Lobato",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Matias Barbosa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Matipo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mato Verde",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Matozinho",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Medina",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mendes Pimentel",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Mercês",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Mesquita",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Minas Novas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Minduri",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mirabela",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Miradouro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mirai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Mirandopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Mirassol",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Mococa",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Moeda",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Moema",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Mogi das Cruzes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Mogi Mirim",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Mogi-Guaçu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monsenhor Paulo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Montalvania",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Monte Alegre de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Monte Alegre do Sul",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Alto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Aprazivel",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Azul",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Azul Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Belo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Monte Carmelo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Santo de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Monte Sião",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Monte Verde",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Monteiro Lobato",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Montes Claros",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Morada Nova de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Morro Agudo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Morro da fumaça",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Munhoz",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Muriae",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Muzambinho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Nanuque",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Não Cerquilho",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Não ituiutaba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Não Lagoinha",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Não São Luiz do Paraitinga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Natercia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Natividade da Serra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Navegantes",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Nazareno",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Nepomuceno",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Nhandeara",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Nova Era",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Nova Granada",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Nova Lima",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Nova Odessa",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Nova Ponte",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Nova Resende",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Nova Serrana",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Nova Trento",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Nova Uniao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Novo Cruzeiro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Novo Horizonte",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Nuporanga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ocaucu",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Olimpia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Olimpio Noronha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Oliveira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Orlandia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Osasco",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Osvaldo Cruz",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ourinhos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ouro Branco",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ouro Fino",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ouro Preto",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Padre Paraiso",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pains",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Palestina",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Palhoca",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Palma",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Palmeira Doeste",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Palmital",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Palmopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Panorama",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Papagaios",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Para de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Paracatu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Paraguacu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Paraguacu Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Paraibuna",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Paraiso",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Paraisopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Paraopeba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Passa Quatro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Passa Tempo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Passos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Patos de Minas",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Patrocinio",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Patrocinio Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Paulinia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Paulo de Farias",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pavao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Pecanha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pederneiras",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pedra Azul",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pedralva",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pedregulho",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pedreira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Pedrinhas Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pedrinopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pedro Leopoldo",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Penapolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Penha",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Perdigao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Perdizes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Perdões",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pereira Barreto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Peruibe",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Piedade",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pilar do Sul",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Pimenta",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pindamonhangaba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Piquete",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Piracema",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Piracicaba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Piraju",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Piranga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pirangi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Piranguinho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pirapetinga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pirapora",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pirapozinho",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pirassunga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Piratininga",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pirauba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pitangueiras",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pitangui",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Piumhi",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Planura",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Poá",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Poco Fundo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Poços de Caldas",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pocrane",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Pomerode",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Pompeia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pompeu",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pontal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ponte Nova",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Porteirinha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Porto Feliz",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Porto Ferreira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pote",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Potim",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Potirendaba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Pouso Alegre",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Pouso Alto",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Praia grande",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Prata",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Presidente Epitacio",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Presidente Olegario",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Presidente Prudente",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Presidente Venceslau",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Promissão",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Quata",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Queluz",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Raul Soares",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Recreio",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Redenção da Serra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Regente Feijo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Resende Costa",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Resplendor",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ressaquinha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Riachinho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Riacho dos Machados",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ribeirão das Neves",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ribeirao Do Sul",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ribeirao Preto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Ribeirao Vermelho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Rinopolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Rio Acima",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Rio Casca",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Rio Claro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Rio das Pedras",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Rio do Prado",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Rio Do Sul",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Rio dos Cedros",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Rio Novo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Rio Paranaiba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Rio Pardo de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Rio Piracicaba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Rio Pomba",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Rio Preto",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Rio Vermelho",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Rochedo De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Rodeiro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Romaria",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Roseira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Rubim",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Sabara",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sabinopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Sacramento",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sales Oliveira",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Salesópolis",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Salinas",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Saltinho",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Salto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Salto de pirapora",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Salto Grande",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Adelia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Barbara",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Bárbara d'Oeste",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Santa Branca",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Cruz da Conceicao",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Cruz das Palmeiras",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Cruz De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Cruz do Rio Pardo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Fe do Sul",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Gertudes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Juliana",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Santa Luzia",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Margarida",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Santa Maria de Itabira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Maria do Suacui",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Santa Rita de Caldas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Santa Rita Do Passa Quatro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Rita do Sapucai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Santa Rosa do Viterbo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santa Vitoria",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Santana da Vargem",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santana de Parnaíba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Santana do Paraiso",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Santo Amaro da Imperatriz",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Santo André",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Santo Antonio da Alegria",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santo Antônio de Posse",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santo Antonio do Amparo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santo Antonio Do Aventureiro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santo Antonio do Jacinto",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Santo Antonio do Monte",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santo Antônio do Pinhal",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santo Expedito",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santopolis do Aguapei",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Santos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Bento do Sapucaí",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sao Bento Do Sul",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Bernardo do Campo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Caetano do Sul",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Carlos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Domingos do Prata",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Francisco",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Francisco De Paula",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Francisco De Sales",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Geraldo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Goncalo do Abaete",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "São Gonçalo do Pará",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Goncalo do Rio Abaixo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São Gonçalo Do Rio Abaixo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Goncalo do Sapucai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Gotardo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Joao Batista",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Joao da Boa Vista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Joao da Ponte",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Joao das Missoes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São João Del Rei",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São João do Manteninha",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São Joao do Oriente",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Joao do Paraiso",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Joao Evangelista",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São João Nepomuceno",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Joaquim da Barra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Joaquim de Bicas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sao Jose",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Jose da Barra",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Jose da Bela Vista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Jose da Lapa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São José do Barreiro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Jose do Divino",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São José do Goiabal",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São Jose do Jacuri",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São josé do rio pardo",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São José do Rio Preto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São José dos Campos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Manuel",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Miguel Arcanjo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Pedro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Pedro da Uniao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Pedro do Suacui",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Pedro dos Ferros",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Romao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Roque",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Roque De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Sebastião",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Sebastiao da Bela Vista",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Sebastiao Da Grama",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Sebastiao do Maranhao",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "São Sebastiao do Paraiso",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Simao",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Tiago",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "São Tomas de Aquino",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "São Vicente",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "São Vicente De Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sapucaia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sarapui",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sarzedo",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Senador Cortes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Senador Firmino",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Senhora de Oliveira",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Serra do Salitre",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Serra dos Aimores",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Serra Negra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Serrana",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Serro",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Sertaozinho",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sete Lagoas",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Severinia",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Silveiras",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Silvianopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Simonesia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Socorro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Sorocaba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Sumaré",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Suzano",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Tabatinga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taboão da Serra",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Taciba",
+    "uf": "SP",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taguai",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taiobeiras",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taiuva",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tambau",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tanabi",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taquaracu de Minas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Taquaritinga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taquarituba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taruma",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tarumirim",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Tatui",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Taubaté",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Teixeiras",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Teofilo Otoni",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Terra Roxa",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tiete",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tijucas",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Timbo",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Timóteo",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tiradentes",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tiros",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Tocantins",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Tombos",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Tremembé",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tres Coracoes",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tres Marias",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tres Pontas",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tumiritinga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Tupa",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Tupaciguara",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Turmalina",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ubá",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Ubai",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Ubaporanga",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Ubatuba",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Uberaba",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Uberlândia",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Urucania",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Urucuia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Semanal"
+  },
+  {
+    "cidade": "Urupes",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Valentim Gentil",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Valinhos",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Valparaiso",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Vargem Grande Do Sul",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Varginha",
+    "uf": "MG",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Varzea da Palma",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bisemanal"
+  },
+  {
+    "cidade": "Varzéa Paulista",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Varzelandia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Vazante",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Vera Cruz",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Vespasiano",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Vicosa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Videira",
+    "uf": "SC",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Vinhedo",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Viradouro",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Virgem da Lapa",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Virginopolis",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Virgolandia",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Bissemanal"
+  },
+  {
+    "cidade": "Visconde do Rio Branco",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Vista Alegre do Alto",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Volta Grande",
+    "uf": "MG",
+    "ativo": false,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Votoratim",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+0",
+    "frequencia": "Diária"
+  },
+  {
+    "cidade": "Votuporanga",
+    "uf": "SP",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternada"
+  },
+  {
+    "cidade": "Xavantina",
+    "uf": "SC",
+    "ativo": true,
+    "prazo": "D+1",
+    "frequencia": "Alternado"
+  }
+]
