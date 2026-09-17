@@ -149,19 +149,9 @@ function HomeScreen({ setRoute }) {
       </div>
 
 
-      {/* Section: Atividade + Dica */}
-      <div className="section-strip">
-        <h3>Sua atividade</h3>
-        <span className="strip-link">Ver tudo →</span>
-      </div>
-      <div className="activity">
-        <div className="activity-card">
-          <h4 className="activity-title">Últimas mensagens geradas</h4>
-          {(()=>{const hist=JSON.parse(localStorage.getItem('historico')||'[]').slice(-4).reverse();if(!hist.length)return <div style={{color:'var(--md-muted)',fontSize:13,padding:'12px 0'}}>Nenhuma atividade ainda — gere sua primeira mensagem.</div>;return hist.map((h,i)=>{const ini=(h.sellerName||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();const d=new Date(h.timestamp);const now=new Date();const diff=Math.floor((now-d)/60000);const when=diff<60?`há ${diff} min`:diff<1440?`hoje, ${d.getHours().toString().padStart(2,'0')}h${d.getMinutes().toString().padStart(2,'0')}`:'ontem';return <div key={i} className="activity-row"><div className="av">{ini}</div><div className="at"><b>{h.sellerName||'Mensagem gerada'}</b> · {h.fileName||'ficha'} <span className="tag">whatsapp</span></div><div className="when">{when}</div></div>;});})()}
-        </div>
-
+      <div style={{ marginTop: 36 }}>
         <div className="alertas-row"><JiraMonitor /><AlertaCard /></div>
-      <ColetaWidget />
+        <ColetaWidget />
       </div>
     </main>
   );

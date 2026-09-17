@@ -1023,75 +1023,6 @@ a { color: inherit; text-decoration: none; }
   width: 1px; height: 12px; background: var(--md-line-strong);
 }
 
-/* ── Section header inside main (small) ───────────────────────────── */
-.section-strip {
-  display: flex; align-items: center; justify-content: space-between;
-  margin: 36px 0 14px;
-}
-.section-strip h3 {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--md-muted);
-}
-.section-strip .strip-link {
-  font-size: 12px;
-  color: var(--md-coral);
-  font-weight: 500;
-}
-
-/* Activity rail (under bento) */
-.activity {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 16px;
-}
-.activity-card {
-  background: var(--md-card);
-  border: 1px solid var(--md-line);
-  border-radius: 14px;
-  padding: 20px 22px;
-}
-.activity-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--md-ink);
-  margin: 0 0 14px;
-  letter-spacing: -0.01em;
-}
-.activity-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--md-line);
-  font-size: 13px;
-  color: var(--md-ink-2);
-}
-.activity-row:last-child { border-bottom: 0; }
-.activity-row .av {
-  width: 26px; height: 26px;
-  border-radius: 999px;
-  background: var(--md-paper-deep);
-  color: var(--md-ink-2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10.5px; font-weight: 600;
-  flex-shrink: 0;
-}
-.activity-row .at {
-  flex: 1; min-width: 0;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.activity-row .at b { color: var(--md-ink); font-weight: 500; }
-.activity-row .at .tag {
-  display: inline-block;
-  background: var(--md-coral-tint);
-  color: var(--md-coral);
-  font-size: 11px;
-  padding: 1.5px 6px;
-  border-radius: 4px;
-  margin: 0 4px;
-}
-.activity-row .when { font-size: 12px; color: var(--md-muted); white-space: nowrap; }
 
 .tip-card {
   background: linear-gradient(155deg, var(--md-purple) 0%, var(--md-sidebar) 100%);
@@ -1679,7 +1610,6 @@ a { color: inherit; text-decoration: none; }
   .tool-card.featured { grid-column: span 2; grid-row: span 1; }
   .tool-card.span-2 { grid-column: span 2; }
   .tool-layout { grid-template-columns: 1fr; }
-  .activity { grid-template-columns: 1fr; }
   .page-title { font-size: 24px; }
   .topbar-search { min-width: 0; max-width: 160px; }
 }
