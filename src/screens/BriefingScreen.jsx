@@ -124,7 +124,7 @@ function BriefingScreen({ setRoute }) {
             </div>
 
             {showContextWarn && (
-              <div style={{ margin: '6px 0 2px', padding: '6px 10px', borderRadius: 6, background: '#fef3c7', color: '#92400e', fontSize: 11, fontWeight: 600 }}>
+              <div className="warning-banner">
                 ⚡ Quanto mais contexto, melhor o briefing
               </div>
             )}
@@ -143,7 +143,7 @@ function BriefingScreen({ setRoute }) {
             </div>
 
             {apiError && (
-              <div style={{ marginTop: 10, padding: '10px 14px', borderRadius: 8, background: 'rgba(232,97,74,0.08)', border: '1px solid rgba(232,97,74,0.25)', color: 'var(--md-coral)', fontSize: 13 }}>
+              <div className="error-banner">
                 ⚠ {apiError}
               </div>
             )}

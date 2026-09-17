@@ -177,7 +177,7 @@ function ToolScreen({ setRoute }) {
               </span>
             </div>
             {apiError && (
-              <div style={{ marginTop: 10, padding: "10px 14px", borderRadius: 8, background: "rgba(232,97,74,0.08)", border: "1px solid rgba(232,97,74,0.25)", color: "var(--md-coral)", fontSize: 13 }}>
+              <div className="error-banner">
                 ⚠ {apiError}
               </div>
             )}

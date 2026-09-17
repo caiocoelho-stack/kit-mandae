@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { I } from '../icons.jsx';
 import { NAV } from '../nav.js';
 
-function Topbar({ route, setRoute }) {
+function Topbar({ route, setRoute, onToggleNav }) {
   const [q, setQ] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const crumb =
@@ -23,6 +23,9 @@ function Topbar({ route, setRoute }) {
   return (
     <header className="topbar">
       <div className="topbar-left">
+        <button className="hamburger-btn" onClick={onToggleNav} aria-label="Abrir menu">
+          {I.menu}
+        </button>
         {crumb ? (
           <div className="topbar-crumb">
             Ferramentas <span style={{ opacity: 0.5 }}>/</span> <b>{crumb}</b>
@@ -41,7 +44,7 @@ function Topbar({ route, setRoute }) {
             onKeyDown={handleKey}
             placeholder="Buscar ferramenta... ⌘K"
             style={{border:'none',outline:'none',background:'transparent',
-              fontSize:13,color:'var(--md-ink)',width:180}} />
+              fontSize:13,color:'var(--md-ink)',width:'100%',minWidth:0}} />
         </div>
         {open && q.trim() && results.length > 1 && (
           <div style={{position:'absolute',top:'100%',right:0,marginTop:4,

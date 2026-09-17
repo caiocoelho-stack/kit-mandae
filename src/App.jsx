@@ -14,11 +14,12 @@ import EventosScreen from './screens/EventosScreen.jsx';
 
 function App() {
   const [route, setRoute] = useState('home'); // home | inicio | ...
+  const [navOpen, setNavOpen] = useState(false);
 
   return (
     <div className="app">
-      <Sidebar route={route} setRoute={setRoute} />
-      <Topbar route={route} setRoute={setRoute} />
+      <Sidebar route={route} setRoute={setRoute} navOpen={navOpen} onCloseNav={() => setNavOpen(false)} />
+      <Topbar route={route} setRoute={setRoute} onToggleNav={() => setNavOpen(o => !o)} />
       <QuickLinks />
       {route === 'home'        ? <HomeScreen      setRoute={setRoute} /> :
        route === 'inicio'      ? <InicioScreen    setRoute={setRoute} /> :

@@ -114,7 +114,7 @@ function ConcorrenteScreen({ setRoute }) {
               <textarea style={{ ...iStyle, minHeight: 52, resize: 'vertical' }} value={contexto} onChange={e => setContexto(e.target.value)} placeholder="Fase da negociação, perfil do cliente, volume" />
             </div>
 
-            <div style={{ margin: '10px 0 2px', padding: '8px 12px', borderRadius: 6, background: '#fef3c7', color: '#92400e', fontSize: 11, fontWeight: 600 }}>
+            <div className="warning-banner" style={{ margin: '10px 0 2px' }}>
               ⚠️ Preencha os diferenciais da Mandaê no system prompt antes de usar em produção.
             </div>
 
@@ -132,7 +132,7 @@ function ConcorrenteScreen({ setRoute }) {
             </div>
 
             {apiError && (
-              <div style={{ marginTop: 10, padding: '10px 14px', borderRadius: 8, background: 'rgba(232,97,74,0.08)', border: '1px solid rgba(232,97,74,0.25)', color: 'var(--md-coral)', fontSize: 13 }}>
+              <div className="error-banner">
                 ⚠ {apiError}
               </div>
             )}
