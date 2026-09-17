@@ -1,32 +1,31 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repository.
 
 ## What this repo is
 
-This is a **deployment repository**, not the source code. It contains the pre-compiled, bundled artifact of the Kit Mandaê internal tools app (TiendaNube/Nuvemshop). There is no build step, no package.json, and no test/lint commands — those live in the source repo.
+Kit Mandaê — internal sales hub (Mandaê / Nuvem Envio), a React + Vite frontend with Vercel serverless functions in `api/`.
 
-The entire application ships as a single `index.html` (~2.5 MB), which contains base64-encoded, gzip-compressed JS/CSS bundles unpacked at runtime via the `DecompressionStream` Web API.
+## Structure
+
+- `src/App.jsx` — shell (Sidebar, Topbar, QuickLinks) + state-based routing (no URL router; `route` state picks the screen).
+- `src/nav.js` — sidebar menu items (`key`, `label`, `icon`, `available`).
+- `src/icons.jsx` — inline SVG icon set, imported as `{ I }`.
+- `src/components/` — Sidebar, Topbar, QuickLinks, and the home-screen widgets (JiraMonitor, AlertaCard, ColetaWidget, JiraMonitorFull).
+- `src/screens/` — one file per tool (HomeScreen, InicioScreen, FollowupScreen, ContratoScreen, SlackScreen, BriefingScreen, ConcorrenteScreen, EventosScreen, JiraScreen).
+- `api/*.js` — Vercel serverless functions (Node runtime, no npm dependencies except Node builtins). Each calls Anthropic, Jira Cloud, or reads public Google Sheets — see file header comments for specifics.
+- `src/styles/global.css` — the full design-token stylesheet (Nimbus tokens) plus global styles. Treat as one file; there's no CSS module system.
+
+## Working here
+
+- Screens are plain components taking `{ setRoute }` — call `setRoute('home')` etc. to navigate. There's no React Router.
+- `npm run build` (`vite build`) must succeed before any deploy; Vercel runs it automatically via `vercel.json`.
+- `api/` functions are unaffected by frontend changes — don't add npm dependencies there unless truly needed (they currently need none).
+- Fonts (Geist / Geist Mono) are self-hosted under `public/fonts/`, referenced from `global.css`.
 
 ## Deploying
 
-Three options (all target Vercel):
-
-**Drag-and-drop** — drag the whole folder to vercel.com/new and click Deploy.
-
-**GitHub auto-deploy** — push to the connected GitHub repo; Vercel redeploys automatically on every push.
-
-**Vercel CLI:**
-```bash
-npm i -g vercel
-vercel --prod
-```
-
-To update: replace `index.html` and redeploy using whichever method is active.
-
-## Configuration
-
-`vercel.json` sets `Cache-Control: public, max-age=0, must-revalidate` on `index.html` so browsers never serve a stale version after a redeploy.
+Push to a branch → open a PR → merge to `main` → Vercel auto-deploys via the connected GitHub integration (build command `vite build`, output `dist/`).
 
 ## Vercel plan note
 
