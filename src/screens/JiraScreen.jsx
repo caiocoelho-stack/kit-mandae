@@ -3,20 +3,24 @@ import JiraMonitorFull from '../components/JiraMonitorFull.jsx';
 
 function JiraScreen({ setRoute }) {
   return (
-    <div style={{ padding: '32px 40px', maxWidth: 860, margin: '0 auto' }}>
-      <div style={{ marginBottom: 28 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-          <button onClick={() => setRoute('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', fontSize: 13, padding: 0, display: 'flex', alignItems: 'center', gap: 4 }}>
-            ← Voltar
-          </button>
+    <main className="main">
+      <div className="page-header">
+        <div className="page-eyebrow">
+          <span className="dot" />
+          <span style={{ cursor: 'pointer' }} onClick={() => setRoute('home')}>Ferramentas</span>
+          <span style={{ color: 'var(--md-muted-2)' }}>/</span>
+          <span style={{ color: 'var(--md-ink-2)' }}>Tickets Parados · INT</span>
         </div>
-        <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0 }}>🎫 Monitor de Tickets</h1>
-        <p style={{ color: '#64748b', marginTop: 6, fontSize: 14 }}>
-          Tickets INT em "Aguardando Comercial" parados há mais de 20 dias. Atualiza automaticamente a cada 5 min.
-        </p>
+        <div className="page-title-row">
+          <div>
+            <h1 className="page-title">🎫 Monitor de Tickets<span className="accent-bar" /></h1>
+            <p className="page-subtitle">Tickets INT em "Aguardando Comercial" parados há mais de 20 dias. Atualiza automaticamente a cada 5 min.</p>
+          </div>
+        </div>
       </div>
+
       <JiraMonitorFull />
-    </div>
+    </main>
   );
 }
 

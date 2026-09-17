@@ -94,14 +94,17 @@ function EventosScreen({ setRoute }) {
     <div style={{display:'flex',flexDirection:'column',height:'100%',overflow:'hidden'}}>
 
       {/* ── Header ── */}
-      <div style={{padding:'24px 40px 0',flexShrink:0}}>
-        <div style={{display:'flex',justifyContent:'space-between',
-          alignItems:'flex-start',marginBottom:16}}>
+      <div className="page-header" style={{padding:'24px 40px 0',marginBottom:0,flexShrink:0}}>
+        <div className="page-eyebrow">
+          <span className="dot" />
+          <span style={{ cursor: 'pointer' }} onClick={() => setRoute('home')}>Ferramentas</span>
+          <span style={{ color: 'var(--md-muted-2)' }}>/</span>
+          <span style={{ color: 'var(--md-ink-2)' }}>Agenda de Eventos</span>
+        </div>
+        <div className="page-title-row" style={{marginBottom:16}}>
           <div>
-            <h2 style={{fontSize:26,fontWeight:700,color:'var(--md-ink)',marginBottom:4}}>
-              Agenda de Eventos
-            </h2>
-            <p style={{fontSize:13,color:'var(--md-ink-2)',margin:0}}>
+            <h1 className="page-title" style={{fontSize:26}}>Agenda de Eventos<span className="accent-bar" /></h1>
+            <p className="page-subtitle" style={{marginTop:8,fontSize:13}}>
               Calendário Nuvem Envio 2026 + Conecta D2C
               {updatedAt && <span style={{color:'var(--md-coral)',marginLeft:8}}>● ao vivo</span>}
             </p>
@@ -165,12 +168,11 @@ function EventosScreen({ setRoute }) {
 
         {/* Erro */}
         {error && (
-          <div style={{padding:16,borderRadius:10,marginTop:8,
-            background:'#fff3f3',border:'1px solid #fcc',color:'#c00',fontSize:13}}>
+          <div className="error-banner" style={{padding:16,marginTop:8}}>
             {error}
             <button onClick={carregar}
               style={{marginLeft:12,textDecoration:'underline',
-                cursor:'pointer',background:'none',border:'none',color:'#c00'}}>
+                cursor:'pointer',background:'none',border:'none',color:'var(--md-coral)'}}>
               Tentar novamente
             </button>
           </div>

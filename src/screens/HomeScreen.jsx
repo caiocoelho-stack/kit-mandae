@@ -6,13 +6,13 @@ import ColetaWidget from '../components/ColetaWidget.jsx';
 
 function HomeScreen({ setRoute }) {
   const ferramentas = [
-    { key: 'inicio',    available: true  },
+    { key: 'inicio',      available: true  },
     { key: 'eventos',     available: true  },
-    { key: 'contrato',  available: true  },
-    { key: 'followup',  available: true  },
-    { key: 'slack',     available: true  },
-    { key: 'briefing',    available: true  },
-    { key: 'concorrente', available: true  },
+    { key: 'contrato',    available: false },
+    { key: 'followup',    available: false },
+    { key: 'slack',       available: true  },
+    { key: 'briefing',    available: false },
+    { key: 'concorrente', available: false },
   ];
   const total = ferramentas.length;
   const disponiveis = ferramentas.filter(f => f.available).length;

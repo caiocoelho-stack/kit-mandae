@@ -536,7 +536,7 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--md-line);
   border-bottom: 1px solid var(--md-line);
   padding: 10px 40px;
-  display: flex; gap: 24px; align-items: center;
+  display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center;
   font-size: 12px;
 }
 .quicklinks-link {
@@ -546,7 +546,17 @@ a { color: inherit; text-decoration: none; }
 }
 .quicklinks-link:hover { color: var(--md-coral); font-weight: 600; }
 
-.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.hamburger-btn {
+  display: none;
+  width: 32px; height: 32px;
+  align-items: center; justify-content: center;
+  border-radius: 8px;
+  color: var(--md-ink-2);
+  flex-shrink: 0;
+}
+.hamburger-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.hamburger-btn:hover { background: var(--md-card); }
 .topbar-wordmark {
   font-size: 15px;
   font-weight: 600;
@@ -563,10 +573,14 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .topbar-crumb b { color: var(--md-ink); font-weight: 500; }
 
-.topbar-right { display: flex; align-items: center; gap: 14px; }
+.topbar-right { display: flex; align-items: center; gap: 14px; min-width: 0; flex: 0 1 auto; }
 .topbar-search {
   display: flex; align-items: center; gap: 8px;
   background: var(--md-paper-deep);
@@ -575,7 +589,9 @@ a { color: inherit; text-decoration: none; }
   padding: 6px 10px 6px 10px;
   font-size: 13px;
   color: var(--md-muted);
-  width: 220px;
+  flex: 1 1 auto;
+  min-width: 90px;
+  max-width: 220px;
   transition: border-color 150ms ease;
 }
 .topbar-search:hover { border-color: var(--md-line-strong); }
@@ -791,7 +807,8 @@ a { color: inherit; text-decoration: none; }
 }
 .page-title-row {
   display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 12px 24px;
 }
 .page-title {
   font-size: 36px;
@@ -823,6 +840,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; gap: 14px;
   color: var(--md-muted);
   font-size: 12px;
+  margin-left: auto;
 }
 .page-meta .meta-pill {
   display: inline-flex; align-items: center; gap: 6px;
@@ -838,6 +856,26 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   background: var(--md-success);
   box-shadow: 0 0 0 3px rgba(31,139,95,0.18);
+}
+
+/* ── Shared inline banners (error / warning), reused across tool screens ── */
+.error-banner {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(232,97,74,0.08);
+  border: 1px solid rgba(232,97,74,0.25);
+  color: var(--md-coral);
+  font-size: 13px;
+}
+.warning-banner {
+  margin: 6px 0 2px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--md-warning-tint);
+  color: var(--md-warning);
+  font-size: 11px;
+  font-weight: 600;
 }
 
 /* ── Bento grid ───────────────────────────────────────────────────── */
@@ -1615,10 +1653,27 @@ a { color: inherit; text-decoration: none; }
 /* ── Misc ────────────────────────────────────────────────────────── */
 .dim-bg { background: var(--md-paper-deep); }
 /* ── Responsive ──────────────────────────────────────────────────── */
+.sidebar-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(20, 16, 32, 0.5);
+  z-index: 90;
+}
 @media (max-width: 768px) {
   .app { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 260px;
+    max-width: 84vw;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.2);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .hamburger-btn { display: inline-flex; }
   .topbar { grid-column: 1; padding: 0 16px; }
+  .quicklinks { grid-column: 1; padding: 10px 16px; }
   .main { grid-column: 1; padding: 20px 16px 60px; }
   .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
   .tool-card.featured { grid-column: span 2; grid-row: span 1; }
@@ -1626,6 +1681,9 @@ a { color: inherit; text-decoration: none; }
   .tool-layout { grid-template-columns: 1fr; }
   .activity { grid-template-columns: 1fr; }
   .page-title { font-size: 24px; }
+  .topbar-search { min-width: 0; max-width: 160px; }
+}
+@media (max-width: 560px) {
   .topbar-search { display: none; }
 }
 @media (max-width: 480px) {
